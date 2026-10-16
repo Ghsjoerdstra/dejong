@@ -218,6 +218,7 @@
 			edit: function ( props ) {
 				var attrs = props.attributes;
 				var blockProps = be.useBlockProps( { className: 'bdj-blok-editor' } );
+				var isOpen = wp.element.useState( false );
 				var postId = useSelect( function ( select ) {
 					var editor = select( 'core/editor' );
 					return editor ? editor.getCurrentPostId() : 0;
@@ -238,15 +239,35 @@
 					);
 				} );
 
+				var titels = Object.keys( panelen );
+				var open = isOpen[ 0 ];
+				var zetOpen = isOpen[ 1 ];
+				var sluit = function () { zetOpen( false ); };
+
 				return el( Fragment, null,
-					el( be.InspectorControls, null,
-						Object.keys( panelen ).map( function ( titel, i ) {
-							return el( c.PanelBody, { key: titel, title: titel, initialOpen: i === 0 },
-								el( 'div', { className: 'bdj-velden' }, panelen[ titel ] )
-							);
-						} )
+					el( be.BlockControls, { group: 'other' },
+						el( c.ToolbarButton, { icon: 'edit', label: 'Blok bewerken', text: 'Bewerken', onClick: function () { zetOpen( true ); } } )
 					),
-					el( 'div', blockProps,
+					el( be.InspectorControls, null,
+						el( c.PanelBody, null,
+							el( c.Button, { variant: 'primary', icon: 'edit', onClick: function () { zetOpen( true ); }, className: 'bdj-open-popup' }, 'Blok bewerken' ),
+							el( 'p', { className: 'components-base-control__help' }, 'Tip: dubbelklik op het blok om het direct te bewerken.' )
+						)
+					),
+					open ? el( c.Modal, { title: blok.titel + ' bewerken', onRequestClose: sluit, size: 'medium', className: 'bdj-popup' },
+						titels.length > 1
+							? el( c.TabPanel, {
+								className: 'bdj-popup-tabs',
+								tabs: titels.map( function ( t ) { return { name: t, title: t }; } )
+							}, function ( tab ) {
+								return el( 'div', { className: 'bdj-velden' }, panelen[ tab.name ] );
+							} )
+							: el( 'div', { className: 'bdj-velden' }, panelen[ titels[ 0 ] ] ),
+						el( 'div', { className: 'bdj-popup-voet' },
+							el( c.Button, { variant: 'primary', onClick: sluit }, 'Klaar' )
+						)
+					) : null,
+					el( 'div', Object.assign( {}, blockProps, { onDoubleClick: function () { zetOpen( true ); } } ),
 						el( 'div', { className: 'bdj-blok-label' }, blok.titel ),
 						el( ServerSideRender, {
 							block: blokNaam,
@@ -254,7 +275,7 @@
 							httpMethod: 'POST',
 							urlQueryArgs: { post_id: postId },
 							EmptyResponsePlaceholder: function () {
-								return el( c.Placeholder, { icon: blok.icoon, label: blok.titel, instructions: 'Vul de velden in de zijbalk in.' } );
+								return el( c.Placeholder, { icon: blok.icoon, label: blok.titel, instructions: 'Dubbelklik op het blok of klik op "Bewerken" om de inhoud in te vullen.' } );
 							}
 						} )
 					)

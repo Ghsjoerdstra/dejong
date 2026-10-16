@@ -10,3 +10,12 @@
 .bdj-veld-herhaler .components-panel__body { border: 1px solid #e0e0e0; margin-bottom: 8px; }
 .bdj-veld-herhaler .bdj-velden > * + *, .bdj-veld-herhaler .components-panel__body > * + * { margin-top: 12px; }
 .bdj-knoppen { display: flex; align-items: center; gap: 4px; margin-top: 8px; }
+
+/* Popup om een blok te bewerken */
+.bdj-popup { width: min(640px, calc(100vw - 32px)); }
+.bdj-popup .components-modal__content { padding-bottom: 0; }
+.bdj-popup-tabs .components-tab-panel__tabs { border-bottom: 1px solid #e0e0e0; margin-bottom: 20px; }
+.bdj-popup .bdj-veld-afbeelding img { max-width: 240px; }
+.bdj-popup .bdj-veld-galerij ul { grid-template-columns: repeat(5, 1fr); }
+.bdj-popup-voet { position: sticky; bottom: 0; display: flex; justify-content: flex-end; margin-top: 24px; padding: 16px 0; background: #fff; border-top: 1px solid #e0e0e0; }
+.bdj-open-popup { width: 100%; justify-content: center; }

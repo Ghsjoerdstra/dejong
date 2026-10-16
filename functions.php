@@ -5,7 +5,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BDJ_VERSION', '1.3.0' );
+define( 'BDJ_VERSION', '1.3.1' );
 define( 'BDJ_DIR', get_template_directory() );
 define( 'BDJ_URI', get_template_directory_uri() );
 
