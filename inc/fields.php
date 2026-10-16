@@ -41,6 +41,7 @@ function bdj_velddefinities() {
 /** Velden voor projecten. */
 function bdj_project_velden() {
 	return array(
+		'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => bdj_activiteit_opties( '— Kies een activiteit —' ), 'hint' => 'Het project verschijnt op deze activiteitpagina. Een nieuwe activiteit maakt u aan als pagina met het sjabloon "Activiteit".' ),
 		'plaats'  => array( 'label' => 'Plaats', 'type' => 'text' ),
 		'galerij' => array( 'label' => "Foto's", 'type' => 'gallery', 'hint' => 'De eerste foto is de foto die als eerste getoond wordt. Sleep om de volgorde te wijzigen.' ),
 	);

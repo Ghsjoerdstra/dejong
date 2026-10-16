@@ -327,9 +327,6 @@ function bdj_import_basis() {
 			'knoptekst' => 'Bekijk projecten in ' . $a[1],
 		), array( 'menu_order' => 100 + $volgorde, 'post_excerpt' => $a[4] ) );
 
-		if ( ! term_exists( $slug, 'activiteit' ) ) {
-			wp_insert_term( $a[0], 'activiteit', array( 'slug' => $slug ) );
-		}
 		$volgorde++;
 	}
 
@@ -475,7 +472,8 @@ function bdj_import_project( $act, $index ) {
 		'post_status'    => 'any',
 		'title'          => $titel,
 		'posts_per_page' => -1,
-		'tax_query'      => array( array( 'taxonomy' => 'activiteit', 'field' => 'slug', 'terms' => $act ) ),
+		'meta_key'       => '_bdj_activiteit',
+		'meta_value'     => bdj_activiteit_id( $act ),
 	) );
 	$project_id = 0;
 	foreach ( $bestaand as $p ) {
@@ -490,7 +488,7 @@ function bdj_import_project( $act, $index ) {
 			'post_title'  => $titel,
 			'menu_order'  => $index,
 		) );
-		wp_set_object_terms( $project_id, $act, 'activiteit' );
+		update_post_meta( $project_id, '_bdj_activiteit', bdj_activiteit_id( $act ) );
 		update_post_meta( $project_id, '_bdj_plaats', $plaats );
 	}
 

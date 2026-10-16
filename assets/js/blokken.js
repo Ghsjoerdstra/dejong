@@ -157,6 +157,33 @@
 		);
 	}
 
+	/** Per activiteit eigen titel, tekst, knop, foto en icoon (activiteitenslider). */
+	function Activiteiten( props ) {
+		var waarde = props.value || {};
+
+		function wijzig( slug, key, w ) {
+			var nieuw = Object.assign( {}, waarde );
+			nieuw[ slug ] = Object.assign( {}, nieuw[ slug ] );
+			nieuw[ slug ][ key ] = w;
+			props.onChange( nieuw );
+		}
+
+		return el( 'div', { className: 'bdj-veld-herhaler' },
+			props.veld.hint ? el( 'p', { className: 'components-base-control__help' }, props.veld.hint ) : null,
+			( props.veld.lijst || [] ).map( function ( act ) {
+				var item = waarde[ act.slug ] || {};
+				return el( c.PanelBody, { key: act.slug, title: item.titel || act.titel, initialOpen: false },
+					el( c.TextControl, { label: 'Titel', value: item.titel || '', placeholder: act.titel, onChange: function ( w ) { wijzig( act.slug, 'titel', w ); }, __next40pxDefaultSize: true, __nextHasNoMarginBottom: true } ),
+					el( c.TextareaControl, { label: 'Tekst', value: item.tekst || '', placeholder: act.tekst, rows: 4, onChange: function ( w ) { wijzig( act.slug, 'tekst', w ); }, __nextHasNoMarginBottom: true } ),
+					el( c.TextControl, { label: 'Knoptekst', value: item.knop || '', placeholder: act.knop, onChange: function ( w ) { wijzig( act.slug, 'knop', w ); }, __next40pxDefaultSize: true, __nextHasNoMarginBottom: true } ),
+					el( Afbeelding, { label: 'Foto', hint: 'Leeg = de foto van de activiteitpagina.', value: item.foto || 0, onChange: function ( w ) { wijzig( act.slug, 'foto', w ); } } ),
+					el( Afbeelding, { label: 'Icoon', hint: 'Leeg = het icoon van de activiteitpagina. Bij voorkeur een PNG met transparante achtergrond.', value: item.icoon || 0, onChange: function ( w ) { wijzig( act.slug, 'icoon', w ); } } ),
+					act.bewerk ? el( c.ExternalLink, { href: act.bewerk }, 'Activiteitpagina bewerken' ) : null
+				);
+			} )
+		);
+	}
+
 	function veldControl( key, veld, waarde, onChange ) {
 		var basis = { key: key, label: veld.label, help: veld.hint || undefined, __nextHasNoMarginBottom: true };
 		switch ( veld.type ) {
@@ -174,6 +201,8 @@
 				return el( Galerij, { key: key, label: veld.label, hint: veld.hint, value: waarde || [], onChange: onChange } );
 			case 'repeater':
 				return el( Herhaler, { key: key, veld: veld, value: waarde || [], onChange: onChange } );
+			case 'activiteiten':
+				return el( Activiteiten, { key: key, veld: veld, value: waarde || {}, onChange: onChange } );
 			default:
 				return el( c.TextControl, Object.assign( basis, { value: waarde || '', onChange: onChange, __next40pxDefaultSize: true } ) );
 		}
