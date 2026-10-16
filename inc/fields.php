@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function bdj_velddefinities() {
 	return array(
-		'page-templates/activiteit.php' => array(
+		'activiteit' => array(
 			'titel'  => 'Activiteit (slider, menu en tegels)',
 			'velden' => array(
 				'icoon'             => array(
@@ -41,7 +41,7 @@ function bdj_velddefinities() {
 /** Velden voor projecten. */
 function bdj_project_velden() {
 	return array(
-		'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => bdj_activiteit_opties( '— Kies een activiteit —' ), 'hint' => 'Het project verschijnt op deze activiteitpagina. Een nieuwe activiteit maakt u aan als pagina met het sjabloon "Activiteit".' ),
+		'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => bdj_activiteit_opties( '— Kies een activiteit —' ), 'hint' => 'Het project verschijnt op de pagina van deze activiteit. Nieuwe activiteiten maakt u aan onder "Activiteiten".' ),
 		'plaats'  => array( 'label' => 'Plaats', 'type' => 'text' ),
 		'galerij' => array( 'label' => "Foto's", 'type' => 'gallery', 'hint' => 'De eerste foto is de foto die als eerste getoond wordt. Sleep om de volgorde te wijzigen.' ),
 	);
@@ -53,7 +53,7 @@ function bdj_velden_voor( $post ) {
 		return array( 'Projectgegevens' => bdj_project_velden() );
 	}
 	if ( 'page' !== $post->post_type || use_block_editor_for_post( $post ) ) {
-		return array(); // pagina's: zie het paneel "Activiteit" in de blokeditor (assets/js/paneel-activiteit.js)
+		return array(); // activiteiten: zie het paneel "Activiteit" in de blokeditor (assets/js/paneel-activiteit.js)
 	}
 	$defs    = bdj_velddefinities();
 	$groepen = array();
@@ -216,7 +216,7 @@ add_action( 'init', function () {
 		'_bdj_tab_afbeelding'    => 'integer',
 	);
 	foreach ( $velden as $key => $type ) {
-		register_post_meta( 'page', $key, array(
+		register_post_meta( 'activiteit', $key, array(
 			'type'              => $type,
 			'single'            => true,
 			'show_in_rest'      => true,
@@ -229,7 +229,7 @@ add_action( 'init', function () {
 } );
 
 add_action( 'enqueue_block_editor_assets', function () {
-	if ( 'page' !== get_post_type() ) {
+	if ( 'activiteit' !== get_post_type() ) {
 		return;
 	}
 	wp_enqueue_script(
@@ -240,5 +240,5 @@ add_action( 'enqueue_block_editor_assets', function () {
 		true
 	);
 	$opties = bdj_velddefinities();
-	wp_add_inline_script( 'bdj-paneel-activiteit', 'window.bdjIconen = ' . wp_json_encode( $opties['page-templates/activiteit.php']['velden']['icoon']['opties'] ) . ';', 'before' );
+	wp_add_inline_script( 'bdj-paneel-activiteit', 'window.bdjIconen = ' . wp_json_encode( $opties['activiteit']['velden']['icoon']['opties'] ) . ';', 'before' );
 } );

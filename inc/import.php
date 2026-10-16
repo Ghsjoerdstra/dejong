@@ -188,7 +188,8 @@ function bdj_import_afbeelding( $url, $post_id = 0, $titel = null ) {
 
 /** Pagina aanmaken of bijwerken (op slug). */
 function bdj_import_pagina( $slug, $titel, $template, $inhoud = '', $meta = array(), $extra = array() ) {
-	$pagina = get_page_by_path( $slug );
+	$type   = isset( $extra['post_type'] ) ? $extra['post_type'] : 'page';
+	$pagina = get_page_by_path( $slug, OBJECT, $type );
 	$data   = array_merge( array(
 		'post_type'    => 'page',
 		'post_status'  => 'publish',
@@ -204,7 +205,9 @@ function bdj_import_pagina( $slug, $titel, $template, $inhoud = '', $meta = arra
 	} else {
 		$id = wp_insert_post( $data );
 	}
-	update_post_meta( $id, '_wp_page_template', $template ? $template : 'default' );
+	if ( 'page' === $type ) {
+		update_post_meta( $id, '_wp_page_template', $template ? $template : 'default' );
+	}
 	// Oude sectievelden (van vóór de blokken) opruimen; activiteit-gegevens blijven.
 	foreach ( array_keys( get_post_meta( $id ) ) as $key ) {
 		if ( 0 === strpos( $key, '_bdj_' ) && ! in_array( $key, array( '_bdj_icoon', '_bdj_knoptekst', '_bdj_slider_afbeelding', '_bdj_header_tonen', '_bdj_header_afbeelding', '_bdj_header_titel', '_bdj_header_link_tekst', '_bdj_header_link_url', '_bdj_header_hoogte' ), true ) ) {
@@ -323,9 +326,9 @@ function bdj_import_basis() {
 			) )
 			. $tegels
 			. $cta;
-		bdj_import_pagina( $slug, $a[0], 'page-templates/activiteit.php', $inhoud, array(
+		bdj_import_pagina( $slug, $a[0], '', $inhoud, array(
 			'knoptekst' => 'Bekijk projecten in ' . $a[1],
-		), array( 'menu_order' => 100 + $volgorde, 'post_excerpt' => $a[4] ) );
+		), array( 'post_type' => 'activiteit', 'menu_order' => 100 + $volgorde, 'post_excerpt' => $a[4] ) );
 
 		$volgorde++;
 	}

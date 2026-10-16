@@ -23,16 +23,18 @@ function bdj_header_velden() {
 add_action( 'init', function () {
 	foreach ( bdj_header_velden() as $key => $info ) {
 		list( $type, $standaard ) = $info;
-		register_post_meta( 'page', $key, array(
-			'type'              => $type,
-			'single'            => true,
-			'default'           => $standaard,
-			'show_in_rest'      => true,
-			'sanitize_callback' => 'boolean' === $type ? 'rest_sanitize_boolean' : ( 'integer' === $type ? 'absint' : 'sanitize_text_field' ),
-			'auth_callback'     => function ( $toegestaan, $meta_key, $post_id ) {
-				return current_user_can( 'edit_post', $post_id );
-			},
-		) );
+		foreach ( array( 'page', 'activiteit' ) as $post_type ) {
+			register_post_meta( $post_type, $key, array(
+				'type'              => $type,
+				'single'            => true,
+				'default'           => $standaard,
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'boolean' === $type ? 'rest_sanitize_boolean' : ( 'integer' === $type ? 'absint' : 'sanitize_text_field' ),
+				'auth_callback'     => function ( $toegestaan, $meta_key, $post_id ) {
+					return current_user_can( 'edit_post', $post_id );
+				},
+			) );
+		}
 	}
 } );
 
@@ -50,7 +52,7 @@ function bdj_header_gegevens( $post_id ) {
 /** Toont de huidige pagina een header? */
 function bdj_toont_header( $post_id = null ) {
 	$post_id = $post_id ? $post_id : get_queried_object_id();
-	if ( ! $post_id || 'page' !== get_post_type( $post_id ) ) {
+	if ( ! $post_id || ! in_array( get_post_type( $post_id ), array( 'page', 'activiteit' ), true ) ) {
 		return false;
 	}
 	$h = bdj_header_gegevens( $post_id );
@@ -74,7 +76,7 @@ function bdj_toon_paginaheader( $post_id ) {
 
 // Editor: paneel "Header" + voorbeeld bovenaan het canvas.
 add_action( 'enqueue_block_editor_assets', function () {
-	if ( 'page' !== get_post_type() ) {
+	if ( ! in_array( get_post_type(), array( 'page', 'activiteit' ), true ) ) {
 		return;
 	}
 	wp_enqueue_script(

@@ -1,6 +1,5 @@
 /**
- * Paneel "Activiteit" in het tabblad Pagina van de blokeditor.
- * Alleen zichtbaar als de pagina het template "Activiteit" heeft.
+ * Paneel "Activiteit" in de zijbalk van de blokeditor (berichttype Activiteit).
  * Deze gegevens worden gebruikt in de activiteitenslider, het submenu en de activiteitentegels.
  */
 ( function ( wp, iconen ) {
@@ -38,18 +37,14 @@
 	}
 
 	function Paneel() {
-		var info = useSelect( function ( select ) {
-			var editor = select( 'core/editor' );
-			return {
-				type: editor.getCurrentPostType(),
-				template: editor.getEditedPostAttribute( 'template' )
-			};
+		var type = useSelect( function ( select ) {
+			return select( 'core/editor' ).getCurrentPostType();
 		}, [] );
-		var metaProp = useEntityProp( 'postType', 'page', 'meta' );
+		var metaProp = useEntityProp( 'postType', 'activiteit', 'meta' );
 		var meta = metaProp[ 0 ] || {};
 		var setMeta = metaProp[ 1 ];
 
-		if ( info.type !== 'page' || info.template !== 'page-templates/activiteit.php' ) {
+		if ( type !== 'activiteit' ) {
 			return null;
 		}
 
@@ -60,7 +55,7 @@
 		}
 
 		return el( Panel, { name: 'bdj-activiteit', title: 'Activiteit', className: 'bdj-paneel-activiteit' },
-			el( 'p', { className: 'components-base-control__help' }, 'Gebruikt in de activiteitenslider, het submenu en de activiteitentegels. De korte tekst in de slider is de samenvatting van deze pagina.' ),
+			el( 'p', { className: 'components-base-control__help' }, 'Deze gegevens worden overal gebruikt: in de activiteitenslider, het menu, de footer en de activiteitentegels. De korte tekst in de slider is de samenvatting (zie "Samenvatting" in deze zijbalk).' ),
 			el( c.SelectControl, {
 				label: 'Icoon',
 				value: meta._bdj_icoon || '',

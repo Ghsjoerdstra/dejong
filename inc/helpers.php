@@ -28,7 +28,7 @@ function bdj_icon_img( $naam, $alt = '' ) {
 }
 
 /**
- * De activiteitpagina's (pagina's met het template "Activiteit"), op volgorde.
+ * De gepubliceerde activiteiten, op volgorde.
  *
  * @return WP_Post[]
  */
@@ -36,10 +36,8 @@ function bdj_activiteiten() {
 	static $lijst = null;
 	if ( null === $lijst ) {
 		$lijst = get_posts( array(
-			'post_type'      => 'page',
+			'post_type'      => 'activiteit',
 			'posts_per_page' => -1,
-			'meta_key'       => '_wp_page_template',
-			'meta_value'     => 'page-templates/activiteit.php',
 			'orderby'        => 'menu_order title',
 			'order'          => 'ASC',
 			'post_status'    => 'publish',
@@ -48,7 +46,7 @@ function bdj_activiteiten() {
 	return $lijst;
 }
 
-/** Icoon-naam bij een activiteitpagina (op basis van de slug, of het veld "icoon"). */
+/** Icoon-naam bij een activiteit (op basis van de slug, of het veld "icoon"). */
 function bdj_activiteit_icoon( $post ) {
 	$icoon = get_post_meta( $post->ID, '_bdj_icoon', true );
 	if ( ! $icoon ) {
@@ -76,9 +74,9 @@ function bdj_activiteit_tab_icoon( $post ) {
 	return bdj_svg( 'tab-' . bdj_activiteit_icoon( $post ) );
 }
 
-/** Is de huidige pagina een activiteitpagina? */
+/** Is de huidige pagina een activiteit? */
 function bdj_is_activiteit() {
-	return is_page_template( 'page-templates/activiteit.php' );
+	return is_singular( 'activiteit' );
 }
 
 /**
@@ -167,7 +165,7 @@ function bdj_menu_items() {
 		// Fallback als er nog geen menu is: activiteiten + alle pagina's op het hoogste niveau.
 		$items[] = array( 'titel' => 'Activiteiten', 'url' => home_url( '/#activiteiten' ), 'classes' => array( 'menu-activiteiten' ), 'actief' => bdj_is_activiteit(), 'is_activiteiten' => true );
 		foreach ( get_pages( array( 'parent' => 0, 'sort_column' => 'menu_order' ) ) as $pagina ) {
-			if ( (int) get_option( 'page_on_front' ) === $pagina->ID || 'page-templates/activiteit.php' === get_page_template_slug( $pagina ) ) {
+			if ( (int) get_option( 'page_on_front' ) === $pagina->ID ) {
 				continue;
 			}
 			$items[] = array( 'titel' => $pagina->post_title, 'url' => get_permalink( $pagina ), 'classes' => array(), 'actief' => is_page( $pagina->ID ), 'is_activiteiten' => false );

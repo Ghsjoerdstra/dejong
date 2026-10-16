@@ -142,11 +142,10 @@ function bdj_blok_schema() {
 		),
 		'activiteiten-slider' => array(
 			'titel'        => 'Activiteitenslider',
-			'beschrijving' => 'Grote foto met een kaart per activiteit en een iconenbalk. Pas per activiteit de titel, tekst, knop, foto en het icoon aan onder "Activiteiten".',
+			'beschrijving' => 'Grote foto met een kaart per activiteit en een iconenbalk. Titel, tekst, knop, foto en icoon pas je aan bij de activiteit zelf (menu "Activiteiten").',
 			'icoon'        => 'images-alt2',
 			'velden'       => array(
 				'start'        => array( 'label' => 'Eerst getoonde activiteit', 'type' => 'select', 'opties' => 'activiteiten' ),
-				'items'        => array( 'label' => 'Activiteiten', 'type' => 'activiteiten', 'paneel' => 'Activiteiten', 'hint' => 'Lege velden nemen de gegevens van de activiteitpagina over.' ),
 				'mobiel_boven' => array( 'label' => 'Op mobiel direct onder de header tonen', 'type' => 'toggle', 'default' => false, 'hint' => 'Handig op de homepage: op mobiel komt de slider dan vóór de andere blokken.', 'paneel' => 'Weergave' ),
 			),
 		),
@@ -204,11 +203,11 @@ function bdj_blok_schema() {
 		),
 		'activiteiten-tegels' => array(
 			'titel'        => 'Activiteitentegels',
-			'beschrijving' => 'Lichtblauw vlak met een tegel per activiteitpagina.',
+			'beschrijving' => 'Lichtblauw vlak met een tegel per activiteit.',
 			'icoon'        => 'grid-view',
 			'velden'       => array(
 				'titel'   => array( 'label' => 'Kop', 'type' => 'text' ),
-				'behalve' => array( 'label' => 'Huidige pagina overslaan', 'type' => 'toggle', 'default' => true ),
+				'behalve' => array( 'label' => 'Huidige activiteit overslaan', 'type' => 'toggle', 'default' => true ),
 			),
 		),
 		'projecten'           => array(
@@ -216,7 +215,7 @@ function bdj_blok_schema() {
 			'beschrijving' => 'Projectkaarten met fotoslider, twee naast elkaar. Projecten beheer je onder "Projecten".',
 			'icoon'        => 'building',
 			'velden'       => array(
-				'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => 'activiteit_paginas', 'hint' => 'Automatisch = de projecten van de activiteitpagina waar dit blok op staat.' ),
+				'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => 'activiteit_paginas', 'hint' => 'Automatisch = de projecten van de activiteit waar dit blok op staat.' ),
 				'vanaf'      => array( 'label' => 'Eerste … projecten overslaan', 'type' => 'number', 'default' => 0, 'hint' => 'Tekst tussen de projecten? Zet twee Projecten-blokken met een Tekstkolom ertussen: 1e blok 4 tonen, 2e blok 4 overslaan.' ),
 				'aantal'     => array( 'label' => 'Aantal tonen (0 = alle)', 'type' => 'number', 'default' => 0 ),
 			),
@@ -257,21 +256,6 @@ function bdj_blok_opties( $soort ) {
 	return $opties;
 }
 
-/** Activiteiten met de waarden van hun pagina (voorbeeldtekst in de slider-velden). */
-function bdj_slider_standaarden() {
-	$lijst = array();
-	foreach ( bdj_activiteiten() as $act ) {
-		$lijst[] = array(
-			'slug'   => $act->post_name,
-			'titel'  => get_the_title( $act ),
-			'tekst'  => get_the_excerpt( $act ),
-			'knop'   => bdj_veld( 'knoptekst', 'Bekijk projecten in ' . strtolower( get_the_title( $act ) ), $act->ID ),
-			'bewerk' => get_edit_post_link( $act->ID, 'raw' ),
-		);
-	}
-	return $lijst;
-}
-
 /** Attribuut-definitie bij een veld. */
 function bdj_blok_attribuut( $veld ) {
 	switch ( $veld['type'] ) {
@@ -287,9 +271,6 @@ function bdj_blok_attribuut( $veld ) {
 			break;
 		case 'repeater':
 			$attr = array( 'type' => 'array', 'default' => array(), 'items' => array( 'type' => 'object' ) );
-			break;
-		case 'activiteiten':
-			$attr = array( 'type' => 'object', 'default' => array() );
 			break;
 		default:
 			$attr = array( 'type' => 'string', 'default' => '' );
@@ -348,9 +329,6 @@ add_action( 'enqueue_block_editor_assets', function () {
 		foreach ( $blok['velden'] as &$veld ) {
 			if ( isset( $veld['opties'] ) && is_string( $veld['opties'] ) ) {
 				$veld['opties'] = bdj_blok_opties( $veld['opties'] );
-			}
-			if ( 'activiteiten' === $veld['type'] ) {
-				$veld['lijst'] = bdj_slider_standaarden();
 			}
 		}
 	}
@@ -595,11 +573,7 @@ function bdj_render_contactformulier( $a ) {
 }
 
 function bdj_render_activiteiten_slider( $a ) {
-	get_template_part( 'template-parts/activiteiten-slider', null, array(
-		'start'        => $a['start'],
-		'mobiel_boven' => ! empty( $a['mobiel_boven'] ),
-		'items'        => isset( $a['items'] ) ? (array) $a['items'] : array(),
-	) );
+	get_template_part( 'template-parts/activiteiten-slider', null, array( 'start' => $a['start'], 'mobiel_boven' => ! empty( $a['mobiel_boven'] ) ) );
 }
 
 function bdj_render_icoon_rijen( $a ) {

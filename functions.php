@@ -5,7 +5,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BDJ_VERSION', '1.3.1' );
+define( 'BDJ_VERSION', '1.4.0' );
 define( 'BDJ_DIR', get_template_directory() );
 define( 'BDJ_URI', get_template_directory_uri() );
 
@@ -43,7 +43,3 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_dequeue_style( 'global-styles' );
 }, 100 );
 
-// Pagina's krijgen een samenvatting (gebruikt als korte tekst in de activiteitenslider).
-add_action( 'init', function () {
-	add_post_type_support( 'page', 'excerpt' );
-} );

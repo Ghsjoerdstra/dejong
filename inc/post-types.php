@@ -1,12 +1,39 @@
 <?php
 /**
- * Berichttypes: Projecten en Vacatures.
- * Een project hoort bij een activiteitpagina (meta "_bdj_activiteit" = pagina-ID).
+ * Berichttypes: Activiteiten, Projecten en Vacatures.
+ * Een project hoort bij een activiteit (meta "_bdj_activiteit" = ID van de activiteit).
  */
 
 defined( 'ABSPATH' ) || exit;
 
 add_action( 'init', function () {
+	// Activiteiten: één plek voor titel, korte tekst, icoon, foto's en de inhoud van de activiteitpagina.
+	register_post_type( 'activiteit', array(
+		'labels'             => array(
+			'name'               => 'Activiteiten',
+			'singular_name'      => 'Activiteit',
+			'add_new'            => 'Nieuwe activiteit',
+			'add_new_item'       => 'Nieuwe activiteit toevoegen',
+			'edit_item'          => 'Activiteit bewerken',
+			'view_item'          => 'Activiteit bekijken',
+			'all_items'          => 'Alle activiteiten',
+			'search_items'       => 'Activiteiten zoeken',
+			'not_found'          => 'Geen activiteiten gevonden',
+			'not_found_in_trash' => 'Geen activiteiten in de prullenbak',
+			'item_published'     => 'Activiteit gepubliceerd.',
+			'item_updated'       => 'Activiteit bijgewerkt.',
+		),
+		'public'             => true,
+		'show_in_rest'       => true,
+		'show_in_nav_menus'  => true,
+		'menu_icon'          => 'dashicons-screenoptions',
+		'menu_position'      => 20,
+		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes', 'custom-fields', 'revisions' ),
+		'has_archive'        => false,
+		'rewrite'            => false, // eigen URL's zonder voorvoegsel (/wonen/), zie hieronder
+		'query_var'          => 'activiteit',
+	) );
+
 	register_post_type( 'project', array(
 		'labels'             => array(
 			'name'          => 'Projecten',
@@ -25,14 +52,6 @@ add_action( 'init', function () {
 		'menu_position'      => 21,
 		'supports'           => array( 'title', 'page-attributes' ),
 		'publicly_queryable' => false,
-	) );
-
-	// Oude koppeling (categorie met dezelfde slug als de activiteitpagina). Verborgen; alleen nog nodig om
-	// bestaande projecten over te zetten naar de nieuwe koppeling (zie bdj_migreer_activiteiten()).
-	register_taxonomy( 'activiteit', 'project', array(
-		'public'       => false,
-		'show_ui'      => false,
-		'hierarchical' => true,
 	) );
 
 	register_post_type( 'vacature', array(
@@ -56,7 +75,7 @@ add_action( 'init', function () {
 } );
 
 /**
- * ID van een activiteitpagina, op basis van een ID of een slug (oude blokken bewaren een slug).
+ * ID van een activiteit, op basis van een ID of een slug (oude blokken bewaren een slug).
  */
 function bdj_activiteit_id( $waarde ) {
 	if ( is_numeric( $waarde ) ) {
@@ -70,7 +89,7 @@ function bdj_activiteit_id( $waarde ) {
 	return 0;
 }
 
-/** Activiteitpagina's als keuzelijst (ID => titel). */
+/** Activiteiten als keuzelijst (ID => titel). */
 function bdj_activiteit_opties( $leeg ) {
 	$opties = array( '' => $leeg );
 	foreach ( bdj_activiteiten() as $act ) {
@@ -80,9 +99,9 @@ function bdj_activiteit_opties( $leeg ) {
 }
 
 /**
- * Projecten bij een activiteitpagina.
+ * Projecten bij een activiteit.
  *
- * @param int|string $activiteit Pagina-ID of slug van de activiteitpagina.
+ * @param int|string $activiteit ID of slug van de activiteit.
  * @return WP_Post[]
  */
 function bdj_projecten( $activiteit ) {
@@ -100,33 +119,83 @@ function bdj_projecten( $activiteit ) {
 	) );
 }
 
-/**
- * Eenmalig: projecten met de oude categorie koppelen aan de activiteitpagina met dezelfde slug.
- */
-function bdj_migreer_activiteiten() {
-	foreach ( get_posts( array( 'post_type' => 'project', 'post_status' => 'any', 'posts_per_page' => -1 ) ) as $project ) {
-		if ( get_post_meta( $project->ID, '_bdj_activiteit', true ) ) {
-			continue;
-		}
-		$termen = wp_get_object_terms( $project->ID, 'activiteit', array( 'fields' => 'slugs' ) );
-		if ( is_wp_error( $termen ) || ! $termen ) {
-			continue;
-		}
-		$id = bdj_activiteit_id( $termen[0] );
-		if ( $id ) {
-			update_post_meta( $project->ID, '_bdj_activiteit', $id );
-		}
-	}
-}
+/* -------------------------------------------------------------------------
+ * URL's van activiteiten: direct onder de hoofdmap (/wonen/), net als voorheen als pagina.
+ * ---------------------------------------------------------------------- */
 
-// Op init (niet admin_init), zodat de voorkant ook direct klopt na een update.
 add_action( 'init', function () {
-	if ( get_option( 'bdj_activiteit_migratie' ) ) {
+	$slugs = array();
+	foreach ( bdj_activiteiten() as $act ) {
+		$slugs[] = $act->post_name;
+		add_rewrite_rule( '^' . preg_quote( $act->post_name, '/' ) . '/?$', 'index.php?activiteit=' . $act->post_name, 'top' );
+	}
+	// Regels opnieuw opslaan als er een activiteit bij komt, weggaat of een andere slug krijgt.
+	$sleutel = implode( ',', $slugs );
+	if ( get_option( 'bdj_activiteit_slugs' ) !== $sleutel ) {
+		update_option( 'bdj_activiteit_slugs', $sleutel );
+		flush_rewrite_rules( false );
+	}
+}, 20 );
+
+add_filter( 'post_type_link', function ( $url, $post ) {
+	if ( 'activiteit' === $post->post_type && 'publish' === $post->post_status ) {
+		return home_url( user_trailingslashit( $post->post_name ) );
+	}
+	return $url;
+}, 10, 2 );
+
+// Geen pagina en activiteit met dezelfde slug (anders is één van de twee niet bereikbaar).
+add_filter( 'wp_unique_post_slug_is_bad_hierarchical_slug', function ( $slecht, $slug, $post_type ) {
+	if ( 'page' === $post_type && get_page_by_path( $slug, OBJECT, 'activiteit' ) ) {
+		return true;
+	}
+	return $slecht;
+}, 10, 3 );
+
+add_filter( 'wp_unique_post_slug_is_bad_flat_slug', function ( $slecht, $slug, $post_type ) {
+	if ( 'activiteit' === $post_type && get_page_by_path( $slug, OBJECT, 'page' ) ) {
+		return true;
+	}
+	return $slecht;
+}, 10, 3 );
+
+/**
+ * Eenmalig: pagina's met het oude sjabloon "Activiteit" omzetten naar het berichttype Activiteit.
+ * ID, inhoud, velden en gekoppelde projecten blijven gelijk.
+ */
+add_action( 'init', function () {
+	if ( get_option( 'bdj_activiteit_cpt' ) ) {
 		return;
 	}
-	bdj_migreer_activiteiten();
-	update_option( 'bdj_activiteit_migratie', 1 );
-}, 20 );
+	$paginas = get_posts( array(
+		'post_type'      => 'page',
+		'post_status'    => 'any',
+		'posts_per_page' => -1,
+		'meta_key'       => '_wp_page_template',
+		'meta_value'     => 'page-templates/activiteit.php',
+	) );
+	foreach ( $paginas as $pagina ) {
+		set_post_type( $pagina->ID, 'activiteit' );
+		delete_post_meta( $pagina->ID, '_wp_page_template' );
+		if ( $pagina->post_parent ) {
+			wp_update_post( array( 'ID' => $pagina->ID, 'post_parent' => 0 ) );
+		}
+		// Menu-items die naar deze pagina wezen.
+		$menu_items = get_posts( array(
+			'post_type'      => 'nav_menu_item',
+			'posts_per_page' => -1,
+			'meta_key'       => '_menu_item_object_id',
+			'meta_value'     => $pagina->ID,
+		) );
+		foreach ( $menu_items as $item ) {
+			if ( 'page' === get_post_meta( $item->ID, '_menu_item_object', true ) ) {
+				update_post_meta( $item->ID, '_menu_item_object', 'activiteit' );
+			}
+		}
+	}
+	update_option( 'bdj_activiteit_cpt', 1 );
+	delete_option( 'bdj_activiteit_slugs' ); // URL-regels opnieuw opbouwen
+}, 15 );
 
 // Filter op activiteit boven het projectoverzicht.
 add_action( 'restrict_manage_posts', function ( $post_type ) {

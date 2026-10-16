@@ -61,7 +61,7 @@ $compact     = bdj_is_activiteit();
 			<ul>
 				<?php foreach ( $activiteiten as $act ) : ?>
 					<li>
-						<a href="<?php echo esc_url( get_permalink( $act ) ); ?>"<?php echo is_page( $act->ID ) ? ' class="actief"' : ''; ?>>
+						<a href="<?php echo esc_url( get_permalink( $act ) ); ?>"<?php echo get_queried_object_id() === $act->ID ? ' class="actief"' : ''; ?>>
 							<?php echo bdj_svg( 'menu-' . bdj_activiteit_icoon( $act ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- eigen SVG-bestand ?>
 							<span><?php echo esc_html( get_the_title( $act ) ); ?></span>
 						</a>

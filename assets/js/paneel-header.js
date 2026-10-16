@@ -17,7 +17,8 @@
 	var PANEEL = 'bdj-header/bdj-header';
 
 	function useHeader() {
-		var metaProp = useEntityProp( 'postType', 'page', 'meta' );
+		var postType = useSelect( function ( select ) { return select( 'core/editor' ).getCurrentPostType(); }, [] );
+		var metaProp = useEntityProp( 'postType', postType, 'meta' );
 		var meta = metaProp[ 0 ] || {};
 		var setMeta = metaProp[ 1 ];
 		var info = useSelect( function ( select ) {
@@ -45,7 +46,7 @@
 	function HeaderPaneel() {
 		var h = useHeader();
 		var m = h.meta;
-		if ( h.info.type !== 'page' ) {
+		if ( h.info.type !== 'page' && h.info.type !== 'activiteit' ) {
 			return null;
 		}
 		var tonen = m._bdj_header_tonen !== false;
@@ -152,7 +153,7 @@
 			return function () { clearInterval( timer ); };
 		}, [ doel ] );
 
-		if ( h.info.type !== 'page' || ! doel ) {
+		if ( ( h.info.type !== 'page' && h.info.type !== 'activiteit' ) || ! doel ) {
 			return null;
 		}
 
