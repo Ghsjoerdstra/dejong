@@ -1,0 +1,12 @@
+/* Zijbalk van de editor: eigen velden */
+.bdj-velden > * + * { margin-top: 16px; }
+.bdj-veld-label { font-size: 11px; font-weight: 500; text-transform: uppercase; margin: 0 0 8px; }
+.bdj-veld-afbeelding img { display: block; max-width: 100%; height: auto; margin-bottom: 8px; background: #f0f0f0; }
+.bdj-veld-afbeelding .components-button + .components-button { margin-left: 8px; }
+.bdj-veld-galerij ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 8px; padding: 0; list-style: none; }
+.bdj-veld-galerij li { margin: 0; background: #f0f0f0; }
+.bdj-veld-galerij img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.bdj-veld-galerij .bdj-knoppen { display: flex; justify-content: space-between; }
+.bdj-veld-herhaler .components-panel__body { border: 1px solid #e0e0e0; margin-bottom: 8px; }
+.bdj-veld-herhaler .bdj-velden > * + *, .bdj-veld-herhaler .components-panel__body > * + * { margin-top: 12px; }
+.bdj-knoppen { display: flex; align-items: center; gap: 4px; margin-top: 8px; }

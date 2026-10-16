@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82.667" height="125.204" viewBox="0 0 82.667 120.864">
+    <defs>
+        <clipPath>
+            <rect width="82.667" height="120.864" fill="none" stroke="#00436a" stroke-width="1.5"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g>
+            <line y1="109.146" transform="translate(7.35 0)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line y1="109.146" transform="translate(75.874 0)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line y1="39.076" transform="translate(25.391 61.256)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="81.554" transform="translate(0.863 61.949)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="18.041" transform="translate(7.35 66.437)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="18.041" transform="translate(7.35 73.56)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="18.041" transform="translate(7.35 80.683)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="18.041" transform="translate(7.35 87.806)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="18.041" transform="translate(7.35 94.929)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y2="39.076" transform="translate(56.844 21.983)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="18.041" transform="translate(56.844 55.879)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="18.041" transform="translate(56.844 48.755)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="18.041" transform="translate(56.844 41.632)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="18.041" transform="translate(56.844 34.509)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="18.041" transform="translate(56.844 27.386)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="81.554" transform="translate(0 100.332)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="51.417" y2="28.854" transform="translate(25.391 71.478)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y1="28.801" x2="50.483" transform="translate(25.391 61.087)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="81.554" transform="translate(0.863 22.818)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line x2="81.554" transform="translate(0.863 6.561)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="49.493" y2="28.882" transform="translate(7.35 21.955)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y1="28.773" x2="49.493" transform="translate(7.35 32.428)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <path d="M13.675,171.361a5.2,5.2,0,1,0-5.2,5.2A5.2,5.2,0,0,0,13.675,171.361Z" transform="translate(-1.123 -57.013)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M118.414,171.361a5.2,5.2,0,1,0-5.2,5.2A5.2,5.2,0,0,0,118.414,171.361Z" transform="translate(-37.061 -57.013)" fill="none" stroke="#00436a" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+</svg>

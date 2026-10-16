@@ -1,0 +1,48 @@
+<svg stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28.541" height="41.729" viewBox="0 0 28.541 41.729">
+    <g transform="translate(0)">
+        <g transform="translate(0)">
+            <g>
+                <line y1="37.684" transform="translate(2.538 0)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+                <line y1="37.684" transform="translate(26.196 0)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            </g>
+        </g>
+        <line y1="13.491" transform="translate(8.766 21.149)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <g transform="translate(0)">
+            <g>
+                <line x2="28.157" transform="translate(0.298 21.389)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            </g>
+        </g>
+        <line x2="6.229" transform="translate(2.538 22.938)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x2="6.229" transform="translate(2.538 25.397)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x2="6.229" transform="translate(2.538 27.856)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x2="6.229" transform="translate(2.538 30.316)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x2="6.229" transform="translate(2.538 32.775)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line y2="13.491" transform="translate(19.626 7.59)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x1="6.229" transform="translate(19.626 19.292)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x1="6.229" transform="translate(19.626 16.833)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x1="6.229" transform="translate(19.626 14.374)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x1="6.229" transform="translate(19.626 11.915)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line x1="6.229" transform="translate(19.626 9.455)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <g transform="translate(0)">
+            <g>
+                <line x2="28.157" transform="translate(0 34.64)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            </g>
+        </g>
+        <line x2="17.752" y2="9.962" transform="translate(8.766 24.678)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line y1="9.944" x2="17.43" transform="translate(8.766 21.091)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <g transform="translate(0)">
+            <g>
+                <line x2="28.157" transform="translate(0.298 7.878)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+                <line x2="28.157" transform="translate(0.298 2.265)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            </g>
+        </g>
+        <line x2="17.088" y2="9.972" transform="translate(2.538 7.58)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <line y1="9.934" x2="17.088" transform="translate(2.538 11.196)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        <g transform="translate(0)">
+            <g>
+                <path d="M6.864,167.955a1.8,1.8,0,1,0-1.8,1.8A1.8,1.8,0,0,0,6.864,167.955Z" transform="translate(-2.53 -128.475)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+                <path d="M111.6,167.955a1.8,1.8,0,1,0-1.8,1.8A1.8,1.8,0,0,0,111.6,167.955Z" transform="translate(-83.515 -128.475)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            </g>
+        </g>
+    </g>
+</svg>

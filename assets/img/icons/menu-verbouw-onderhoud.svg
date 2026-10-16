@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.837" height="49.472" viewBox="0 0 33.837 49.472">
+    <defs>
+        <clipPath>
+            <rect width="33.837" height="49.472" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g>
+            <line y1="44.676" transform="translate(3.009 0)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line y1="44.676" transform="translate(31.057 0)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line y1="15.995" transform="translate(10.393 25.074)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="33.382" transform="translate(0.353 25.357)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="7.384" transform="translate(3.009 27.194)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="7.384" transform="translate(3.009 30.11)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="7.384" transform="translate(3.009 33.025)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="7.384" transform="translate(3.009 35.941)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="7.384" transform="translate(3.009 38.857)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y2="15.995" transform="translate(23.267 8.998)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="7.384" transform="translate(23.267 22.872)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="7.384" transform="translate(23.267 19.957)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="7.384" transform="translate(23.267 17.041)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="7.384" transform="translate(23.267 14.125)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="7.384" transform="translate(23.267 11.21)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="33.382" transform="translate(0 41.068)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="21.046" y2="11.811" transform="translate(10.393 29.258)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y1="11.789" x2="20.664" transform="translate(10.393 25.004)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <line x2="33.382" transform="translate(0.353 9.34)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line x2="33.382" transform="translate(0.353 2.686)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x2="20.259" y2="11.822" transform="translate(3.009 8.987)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line y1="11.777" x2="20.259" transform="translate(3.009 13.273)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <path d="M7.53,168.288A2.129,2.129,0,1,0,5.4,170.417,2.129,2.129,0,0,0,7.53,168.288Z" transform="translate(-2.392 -121.483)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M112.269,168.288a2.129,2.129,0,1,0-2.129,2.129A2.129,2.129,0,0,0,112.269,168.288Z" transform="translate(-78.969 -121.483)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+</svg>

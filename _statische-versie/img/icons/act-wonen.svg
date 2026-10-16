@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="122.504" height="125.204" viewBox="0 0 122.504 125.204">
+    <defs>
+        <clipPath>
+            <rect width="122.504" height="125.204" fill="none" stroke="#1b4164" stroke-width="1.5"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g>
+            <path d="M115.532,98.98v56.4H20.22V98.98" transform="translate(-6.444 -31.543)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M121.413,77.5l-15.961-45.93H14.6L2.59,77.5H41.044L62.258,46.474,85.183,77.5Z" transform="translate(-0.826 -10.06)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M73.31,164.618V127.955H95.633v36.663" transform="translate(-23.362 -40.777)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M114.057,22.386V2h16.033V22.386" transform="translate(-36.348 -0.637)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <rect width="10.274" height="10.475" transform="translate(26.47 87.178)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+    <rect width="10.274" height="10.475" transform="translate(85.726 87.178)" fill="none" stroke="#1b4164" stroke-miterlimit="10" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43.453" height="43.228" viewBox="0 0 43.453 43.228">
+    <g transform="translate(0)" style="isolation: isolate">
+        <g transform="translate(0)">
+            <path d="M53.407,77.146v26.2H15.988v-26.2" transform="translate(-12.547 -60.544)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M21.555,9.185H10.746L3.752,19.6H14.7L25.088,3.821,34.1,19.6H45.6L38.653,9.094H28.1" transform="translate(-2.944 -2.998)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <ellipse cx="4" cy="4" rx="4" ry="4" transform="translate(17.972 13.397)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M78.182,138.343V126.974a5.147,5.147,0,0,1,10.293,0v11.369" transform="translate(-61.357 -95.609)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line x2="10.293" transform="translate(16.825 30.934)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <rect width="4.885" height="7.098" transform="translate(7.695 20.874)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <rect width="4.885" height="7.098" transform="translate(7.695 31.393)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <rect width="4.885" height="7.098" transform="translate(31.477 20.874)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <rect width="4.885" height="7.098" transform="translate(31.477 31.393)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+</svg>

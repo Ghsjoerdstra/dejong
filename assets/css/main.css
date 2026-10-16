@@ -1,0 +1,1068 @@
+/* ==========================================================
+   Bouwgroep DE Jong — stylesheet
+   Maten afgestemd op het origineel (desktop 1440px):
+   - header/containers: max 1360px
+   - tekstkolommen: max 800px
+   - footer: max 1160px
+   ========================================================== */
+
+:root {
+  --blauw: #004267;
+  --blauw-donker: #002e48;
+  --blauw-25: rgba(0, 66, 103, .25);
+  --oranje: #eaab3b;
+  --oranje-donker: #d4952a;
+  --lichtblauw: #eff4f8;
+  --lichtgrijs: #f5f5f5;
+  --wit: #ffffff;
+  --max: 1360px;
+  --font: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #000;
+  background: var(--wit);
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 700; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.up { text-transform: uppercase; }
+.medium { font-weight: 500; }
+
+/* ---------- Knoppen & links ---------- */
+.btn {
+  display: inline-block;
+  background: var(--oranje);
+  color: var(--wit);
+  font-weight: 700;
+  padding: 12px;
+  line-height: 1.6;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  transition: background .2s;
+}
+.btn:hover { background: var(--oranje-donker); }
+.btn-wit { background: var(--wit); color: var(--blauw); }
+.btn-wit:hover { background: var(--lichtblauw); }
+
+.link-lijn {
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+  padding: 8px 0;
+  font-weight: 700;
+  color: var(--wit);
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+.link-lijn::after { content: "›"; font-size: 1.4em; line-height: 1; }
+
+/* ==========================================================
+   Header (vast bovenin, 1360px breed)
+   ========================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-width: var(--max);
+  margin: 0 auto;
+  background: var(--blauw);
+  color: var(--wit);
+}
+.header-bar {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 160px;
+}
+.logo {
+  display: block;
+  padding: 30px 0 30px 8px;
+}
+.compact .logo { padding: 10px 0 10px 8px; }
+
+.logo-beeld { width: 252px; height: 83px; display: block; }
+
+.menu {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.menu a { display: flex; align-items: center; }
+.menu a:hover, .menu a.actief { color: var(--oranje); }
+
+/* Submenu activiteiten */
+.submenu {
+  display: none;
+  border-top: 1px solid var(--wit);
+  padding: 8px;
+}
+.site-header:has(.menu-activiteiten:hover) .submenu,
+.submenu:hover,
+.compact .submenu { display: block; }
+.submenu ul {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 128px;
+  display: flex;
+  justify-content: space-between;
+}
+.submenu a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 8px;
+  max-width: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.submenu svg { width: 40px; height: 40px; }
+.submenu span { padding-top: 16px; font-size: 15px; line-height: 1.5; }
+.submenu a:hover, .submenu a.actief { color: var(--oranje); }
+
+/* Mobiel menu */
+.menu-toggle, .menu-knop, .mobiel-menu { display: none; }
+
+/* ==========================================================
+   Hero + wit introvak dat over de foto valt
+   ========================================================== */
+.hero {
+  height: 800px;
+  overflow: hidden;
+  position: relative; /* foto over de volle schermbreedte, ook op brede schermen (zoals live) */
+}
+.hero > img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero-tekst {
+  position: absolute;
+  top: 404px;
+  left: 0;
+  right: 0;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.hero-vak {
+  width: 512px;
+  padding: 24px;
+  background: var(--blauw-25);
+  color: var(--wit);
+}
+.hero-vak h1, .hero-vak .titel {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 60px;
+  text-transform: uppercase;
+}
+.hero-vak .link-lijn { margin: 24px 0; }
+
+.intro-vak {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: -108px auto 0;
+  padding: 32px 32px 0;
+  background: var(--wit);
+  text-align: center;
+  color: var(--blauw);
+}
+.intro-vak h1, .intro-vak .h1, .intro-vak .vak-kop {
+  font-size: 30px;
+  line-height: 45px;
+  color: var(--oranje);
+  text-transform: uppercase;
+  padding-bottom: 32px;
+}
+.intro-tekst { padding: 32px 0; }
+.intro-tekst > p,
+.intro-tekst > .smal {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 32px;
+  font-weight: 500;
+}
+.intro-tekst > p + p { padding-top: 0; }
+
+/* ==========================================================
+   Blauwe band (loopt door achter het witte vak)
+   ========================================================== */
+.blauw-band {
+  background: var(--blauw);
+  margin-top: -206px;
+  padding-top: 206px;
+}
+.blauw-band .inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 0;
+  color: var(--wit);
+  font-weight: 500;
+}
+
+/* Tijdlijn homepage */
+.tijdlijn {
+  display: flex;
+  padding: 0 32px 48px;
+  position: relative;
+}
+.tijdlijn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 48px;
+  border-left: 1px dashed rgba(255, 255, 255, .6);
+}
+.tijdlijn .kolom { width: 50%; padding-top: 32px; }
+.tijdlijn .links { padding-right: 32px; text-align: right; }
+.tijdlijn .rechts { padding-left: 32px; padding-top: 196px; }
+.tijdlijn h3 img { width: 27.5px; height: 31px; flex-shrink: 0; object-fit: contain; }
+.tijdlijn h3 {
+  font-size: 22px;
+  line-height: 35.2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.tijdlijn .links h3 { justify-content: flex-end; }
+.tijdlijn p { padding-bottom: 32px; }
+.tijdlijn .links p + h3 { margin-top: 70px; }
+.tijdlijn .rechts p + h3 { margin-top: 70px; }
+.blauw-band .meer { text-align: center; padding-bottom: 32px; }
+
+/* Twee tekstkolommen in de blauwe band (over ons / vacatures) */
+.twee-kolom {
+  display: flex;
+  gap: 48px;
+  padding: 48px 32px;
+}
+.twee-kolom > div { flex: 1; padding: 32px 0; }
+.twee-kolom p + p { margin-top: 24px; }
+
+/* ==========================================================
+   Activiteiten-slider (werkt met radioknoppen, geen JS)
+   ========================================================== */
+.act-slider { position: relative; }
+.act-slider > input,
+.project > input { position: fixed; top: 50%; left: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.act-slide {
+  display: none;
+  padding: 192px 40px;
+  background-size: cover;
+  background-position: center;
+}
+.act-kaart {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px;
+  background: rgba(255, 255, 255, .9);
+  color: var(--blauw);
+}
+.act-kaart .rij { display: flex; justify-content: space-between; gap: 32px; }
+.act-kaart h2 {
+  font-size: 22px;
+  line-height: 35.2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.act-kaart p { font-weight: 500; min-height: 7em; }
+.act-kaart .icoon { width: 123px; flex-shrink: 0; }
+.act-kaart .icoon img { width: 123px; height: 125px; object-fit: contain; }
+.act-kaart .btn { margin-top: 32px; }
+
+.act-tabs {
+  background: var(--wit);
+}
+.act-tabs ul {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.act-tabs label {
+  position: relative;
+  display: block;
+  width: 56px;
+  padding: 16px 0;
+  cursor: pointer;
+  color: var(--blauw);
+}
+.act-tabs svg, .act-tabs img { width: 56px; height: 42px; position: relative; z-index: 1; }
+.act-tabs img { object-fit: contain; }
+.act-tabs label:hover { color: var(--oranje); }
+/* wit pijltje boven het actieve icoon */
+.act-tabs label::before {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 0;
+  top: -28px;
+  width: 57px;
+  height: 57px;
+  background: var(--wit);
+  transform: rotate(45deg) scale(.7);
+}
+
+/* ==========================================================
+   "Bouwen begint bij een goed idee"
+   ========================================================== */
+.idee {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 320px 32px;
+}
+.idee h2 {
+  font-size: 50px;
+  line-height: 62.5px;
+  color: var(--oranje);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.idee p { color: var(--blauw); font-weight: 500; }
+
+/* ==========================================================
+   CTA blok: tekst links, foto rechts
+   ========================================================== */
+.cta {
+  display: flex;
+  background: var(--blauw);
+}
+.cta .tekst {
+  width: 50%;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--wit);
+}
+.cta h2 {
+  font-size: 30px;
+  line-height: 45px;
+  text-transform: uppercase;
+  padding-bottom: 32px;
+}
+.cta p { max-width: 540px; padding-bottom: 48px; }
+.cta .btn { align-self: flex-start; }
+.cta .beeld {
+  width: 50%;
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.site-footer {
+  background: var(--blauw-donker);
+  color: var(--wit);
+  padding: 64px;
+}
+.footer-grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.footer-grid > div { padding-bottom: 32px; }
+.footer-logo { display: inline-block; padding-bottom: 32px; }
+.footer-logo .logo-beeld { width: 188px; height: 53px; }
+.site-footer address { font-style: normal; padding-bottom: 16px; margin-bottom: 8px; }
+.footer-grid .up li { padding-bottom: 8px; }
+.footer-grid .up strong { display: block; font-weight: 400; padding-bottom: 28px; }
+.footer-grid a:hover { color: var(--oranje); }
+.sbb {
+  padding-top: 40px;
+  text-align: center;
+}
+.sbb .rij { display: flex; justify-content: center; align-items: center; }
+.sbb img { width: 50px; margin-bottom: 8px; filter: brightness(0) invert(1); }
+.sbb span { margin-left: 8px; }
+.footer-onder {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 32px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .5);
+}
+
+/* ==========================================================
+   Projectpagina's
+   ========================================================== */
+.project-rij {
+  display: flex;
+  padding-top: 8px;
+  background: var(--wit);
+}
+.project-rij > .project { width: 50%; }
+.project-rij > .project:first-child { padding-right: 4px; }
+.project-rij > .project:last-child { padding-left: 4px; }
+.project-rij > .project:only-child { padding: 0; }
+
+.project { position: relative; }
+.project-venster { position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--lichtblauw); }
+.project-track { display: flex; height: 100%; transition: transform .45s ease; }
+.project-foto { flex: 0 0 100%; position: relative; }
+.project-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.project-label {
+  position: absolute;
+  top: 0;
+  left: 32px;
+  z-index: 3;
+  padding: 8px 64px 8px 32px;
+  background: var(--blauw-25);
+  color: var(--wit);
+  font-size: 20px;
+  line-height: 32px;
+}
+.project-label strong { display: block; font-weight: 700; }
+.project-label span { display: inline-flex; align-items: center; gap: 8px; }
+.project-label svg { width: 13.6px; height: 18.3px; }
+
+.pijl {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: block;
+  padding: 8px 16px;
+  background: var(--wit);
+  cursor: pointer;
+  line-height: 0;
+}
+.pijl svg { width: 14px; height: 26px; color: var(--blauw); }
+[class^="pijlen-"] { display: none; }
+.pijl.vorige { left: 32px; }
+.pijl.volgende { right: 32px; }
+.pijl:hover { background: var(--lichtblauw); }
+
+.bolletjes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 21px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.bolletjes label {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--wit);
+  border: 1px solid var(--wit);
+  cursor: pointer;
+}
+
+/* Actieve foto per project (max. 8 foto's) */
+.project:has(> input:nth-of-type(2):checked) .project-track { transform: translateX(-100%); }
+.project:has(> input:nth-of-type(3):checked) .project-track { transform: translateX(-200%); }
+.project:has(> input:nth-of-type(4):checked) .project-track { transform: translateX(-300%); }
+.project:has(> input:nth-of-type(5):checked) .project-track { transform: translateX(-400%); }
+.project:has(> input:nth-of-type(6):checked) .project-track { transform: translateX(-500%); }
+.project:has(> input:nth-of-type(7):checked) .project-track { transform: translateX(-600%); }
+.project:has(> input:nth-of-type(8):checked) .project-track { transform: translateX(-700%); }
+.project:has(> input:nth-of-type(1):checked) .pijlen-1,
+.project:has(> input:nth-of-type(2):checked) .pijlen-2,
+.project:has(> input:nth-of-type(3):checked) .pijlen-3,
+.project:has(> input:nth-of-type(4):checked) .pijlen-4,
+.project:has(> input:nth-of-type(5):checked) .pijlen-5,
+.project:has(> input:nth-of-type(6):checked) .pijlen-6,
+.project:has(> input:nth-of-type(7):checked) .pijlen-7,
+.project:has(> input:nth-of-type(8):checked) .pijlen-8 { display: block; }
+.project:has(> input:nth-of-type(1):checked) .bolletjes label:nth-child(1),
+.project:has(> input:nth-of-type(2):checked) .bolletjes label:nth-child(2),
+.project:has(> input:nth-of-type(3):checked) .bolletjes label:nth-child(3),
+.project:has(> input:nth-of-type(4):checked) .bolletjes label:nth-child(4),
+.project:has(> input:nth-of-type(5):checked) .bolletjes label:nth-child(5),
+.project:has(> input:nth-of-type(6):checked) .bolletjes label:nth-child(6),
+.project:has(> input:nth-of-type(7):checked) .bolletjes label:nth-child(7),
+.project:has(> input:nth-of-type(8):checked) .bolletjes label:nth-child(8) { background: transparent; }
+
+/* Introtekst tussen de projecten */
+.project-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 128px 32px;
+  color: var(--blauw);
+}
+.project-intro p + p { margin-top: 24px; }
+
+/* Drie tekstkolommen */
+.drie-kolom {
+  max-width: var(--max);
+  margin: 128px auto;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  color: var(--blauw);
+  font-weight: 500;
+}
+.drie-kolom > div { width: 347px; }
+
+/* Andere activiteiten (lichtblauw) */
+.andere {
+  background: var(--lichtblauw);
+}
+.andere .inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 112px 0;
+  color: var(--blauw);
+}
+.andere h2 {
+  font-size: 50px;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 64px 32px;
+}
+.andere-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.andere-grid a {
+  background: var(--wit);
+  padding: 32px;
+  text-align: center;
+  min-height: 302px;
+  transition: box-shadow .2s;
+}
+.andere-grid a:hover { box-shadow: 0 6px 24px rgba(0, 66, 103, .15); }
+.andere-grid img { height: 94px; width: auto; max-width: 100%; margin: 15px auto 0; display: block; transform: scale(.75); }
+.andere-grid span {
+  display: block;
+  padding-top: 32px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================
+   Keurmerken (Kwaliteitsborging)
+   ========================================================== */
+.keurmerken {
+  background: var(--lichtgrijs);
+  padding: 80px 0;
+}
+.keurmerken .logos-titel {
+  text-align: center;
+  color: var(--blauw);
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 0 0 48px;
+}
+.logo-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(var(--kolommen, 2), 1fr);
+  gap: 80px;
+}
+.logo-grid > div {
+  background: var(--wit);
+  padding: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keurmerken img { display: inline-block; max-width: 100%; height: auto; }
+
+/* ==========================================================
+   Over ons
+   ========================================================== */
+.over-wit {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+.over-rij {
+  display: flex;
+  padding-bottom: 64px;
+  color: var(--blauw);
+  font-weight: 500;
+}
+.over-rij + .over-rij {
+  border-top: 1px dashed var(--blauw);
+  padding-top: 64px;
+}
+.over-rij .links { width: 220px; flex-shrink: 0; padding: 0 32px 32px; }
+.over-rij .links img { width: auto; max-width: 156px; height: auto; }
+.over-rij .rechts { padding: 0 32px; }
+.over-rij h2 {
+  font-size: 22px;
+  line-height: 35.2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.over-rij p + p { margin-top: 24px; }
+
+/* ==========================================================
+   Vacatures
+   ========================================================== */
+.vacature {
+  max-width: 1260px;
+  margin: 0 auto 32px;
+  padding: 16px 16px 16px 0;
+  background: var(--lichtgrijs);
+  text-align: left;
+}
+.vacature summary {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  cursor: pointer;
+}
+.vacature summary::-webkit-details-marker { display: none; }
+.vacature .toggle {
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+}
+.vacature .toggle svg {
+  width: 50px;
+  height: 50px;
+  transform: rotate(180deg);
+  transition: transform .25s;
+}
+.vacature[open] .toggle svg { transform: none; }
+.vacature .titel-wrap { flex: 1; display: flex; justify-content: center; }
+.vacature .titel {
+  width: 33.333%;
+  min-width: 300px;
+  min-height: 102px;
+  padding: 16px;
+  background: var(--oranje);
+  color: var(--wit);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vacature-inhoud {
+  padding: 32px 32px 16px 114px;
+  color: var(--blauw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 48px;
+}
+.vacature-inhoud .breed { grid-column: 1 / -1; }
+.vacature-inhoud h4 { font-size: 18px; font-weight: 700; margin: 16px 0 4px; }
+.vacature-inhoud ul { list-style: disc; padding-left: 20px; }
+
+.vacature-contact {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 64px;
+  font-weight: 500;
+}
+.vacature-contact p { margin-bottom: 8px; }
+.vacature-contact a { text-decoration: underline; }
+
+/* ==========================================================
+   Contact
+   ========================================================== */
+.contact-vak {
+  max-width: 1260px;
+  margin: 0 auto 32px;
+  padding: 32px;
+  background: var(--lichtgrijs);
+  text-align: left;
+  display: flex;
+  gap: 32px;
+}
+.contact-info { width: 388px; flex-shrink: 0; margin-bottom: 32px; }
+.contact-info h2 { font-size: 18px; margin-bottom: 24px; }
+.contact-info p { margin-bottom: 24px; }
+.contact-regel { display: flex; align-items: center; gap: 12px; }
+.contact-regel img { width: 21px; height: auto; }
+.contact-regel:last-of-type { margin-bottom: 24px; }
+.contact-form { flex: 1; }
+.contact-form label { display: block; margin-bottom: 16px; }
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  background: var(--wit);
+  font: inherit;
+  color: var(--blauw);
+}
+.contact-form input { height: 45px; }
+.contact-form textarea { height: 102px; resize: vertical; }
+.contact-form input:focus,
+.contact-form textarea:focus { outline: 2px solid var(--oranje); }
+.contact-form .verstuur { text-align: right; }
+.contact-form .btn { padding: 16px 48px; }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 1360px) {
+  .hero-tekst { padding: 0 0; }
+}
+
+@media (max-width: 1100px) {
+  .header-bar { gap: 60px; }
+  .submenu ul { padding: 0 32px; }
+}
+
+@media (max-width: 1023px) {
+  /* header: logo + hamburger, uitklapmenu */
+  .header-bar { justify-content: space-between; padding: 0 16px; gap: 0; }
+  .logo, .compact .logo { padding: 10px 0; }
+  .logo-beeld { width: 180px; height: 59px; }
+  .menu, .submenu, .compact .submenu { display: none; }
+  .menu-knop { display: flex; align-items: center; cursor: pointer; padding-right: 16px; }
+  .menu-knop img { width: 40px; height: 32px; }
+  .menu-toggle:checked ~ .mobiel-menu { display: block; }
+  .mobiel-menu {
+    padding: 8px 32px 24px;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+  }
+  .mobiel-menu .kop { color: rgba(255, 255, 255, .75); font-weight: 700; padding: 8px 0; text-transform: uppercase; }
+  .mobiel-menu li { padding-bottom: 8px; }
+  .mobiel-menu ul + ul { margin-top: 24px; }
+
+  .hero { height: 520px; }
+  .hero-tekst { top: auto; bottom: 150px; padding: 0 16px; }
+  .hero-vak { width: auto; max-width: 512px; }
+  .hero-vak h1, .hero-vak .titel { font-size: 34px; line-height: 40px; }
+  .intro-vak { margin: -108px 16px 0; padding: 24px 16px 0; }
+
+  .tijdlijn { flex-direction: column; padding: 0 24px 32px 40px; }
+  .tijdlijn::before { left: 24px; }
+  .tijdlijn .kolom { width: 100%; padding: 0; text-align: left; }
+  .tijdlijn .links h3 { justify-content: flex-end; flex-direction: row-reverse; }
+  .tijdlijn .rechts { padding-top: 0; }
+  .tijdlijn .links p + h3, .tijdlijn .rechts p + h3 { margin-top: 0; }
+
+  .twee-kolom { flex-direction: column; gap: 0; padding: 32px 24px; }
+  .twee-kolom > div { padding: 16px 0; }
+
+  .act-slide { padding: 96px 16px; }
+  .act-kaart { padding: 32px 24px; }
+  .act-kaart .icoon { display: none; }
+  .act-kaart p { min-height: 0; }
+  .act-tabs ul { padding: 0 16px; }
+  .act-tabs label, .act-tabs svg, .act-tabs img { width: 36px; }
+
+  .idee { padding: 120px 24px; }
+  .idee h2 { font-size: 36px; line-height: 44px; }
+
+  .cta { flex-direction: column-reverse; }
+  .cta .tekst, .cta .beeld { width: 100%; }
+  .cta .tekst { padding: 48px 24px; }
+
+  .site-footer { padding: 48px 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 0; }
+  .sbb { text-align: left; }
+  .sbb .rij { justify-content: flex-start; }
+  .footer-onder { flex-direction: column; gap: 4px; }
+
+  .project-rij { flex-direction: column; }
+  .project-rij > .project { width: 100%; padding: 0 !important; }
+  .project-rij > .project + .project { padding-top: 8px !important; }
+  .project-label { left: 0; padding: 8px 24px; font-size: 17px; line-height: 26px; }
+  .pijl.vorige { left: 8px; }
+  .pijl.volgende { right: 8px; }
+  .project-intro { padding: 64px 24px; }
+  .drie-kolom { flex-direction: column; margin: 32px auto; padding: 24px; }
+  .drie-kolom > div { width: auto; }
+  .andere .inner { padding: 48px 16px; }
+  .andere h2 { font-size: 32px; padding: 32px 0; }
+  .andere-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .andere-grid a { min-height: 0; padding: 24px 12px; }
+  .andere-grid span { font-size: 18px; line-height: 1.4; padding-top: 12px; }
+
+  .over-wit { padding: 48px 16px; }
+  .over-rij { flex-direction: column; }
+  .over-rij .links { width: auto; padding: 0 0 16px; }
+  .over-rij .links img { width: 115px; }
+  .over-rij .rechts { padding: 0; }
+
+  .vacature { padding: 12px; }
+  .vacature .toggle { padding: 8px 12px 8px 0; }
+  .vacature .toggle svg { width: 32px; height: 32px; }
+  .vacature .titel { width: 100%; min-width: 0; min-height: 0; font-size: 19px; }
+  .vacature-inhoud { grid-template-columns: 1fr; padding: 24px 8px 8px; }
+
+  .contact-vak { flex-direction: column; padding: 24px 16px; }
+  .keurmerken { padding: 32px; }
+  .logo-grid { grid-template-columns: 1fr; gap: 24px; }
+  .contact-info { width: auto; margin-bottom: 0; }
+}
+
+/* Actieve slide en tab van de activiteiten-slider (7 activiteiten) */
+.act-slider > input:nth-of-type(1):checked ~ .act-slides > .act-slide:nth-child(1),
+.act-slider > input:nth-of-type(2):checked ~ .act-slides > .act-slide:nth-child(2),
+.act-slider > input:nth-of-type(3):checked ~ .act-slides > .act-slide:nth-child(3),
+.act-slider > input:nth-of-type(4):checked ~ .act-slides > .act-slide:nth-child(4),
+.act-slider > input:nth-of-type(5):checked ~ .act-slides > .act-slide:nth-child(5),
+.act-slider > input:nth-of-type(6):checked ~ .act-slides > .act-slide:nth-child(6),
+.act-slider > input:nth-of-type(7):checked ~ .act-slides > .act-slide:nth-child(7) { display: block; }
+.act-slider > input:nth-of-type(1):checked ~ .act-tabs li:nth-child(1) label::before,
+.act-slider > input:nth-of-type(2):checked ~ .act-tabs li:nth-child(2) label::before,
+.act-slider > input:nth-of-type(3):checked ~ .act-tabs li:nth-child(3) label::before,
+.act-slider > input:nth-of-type(4):checked ~ .act-tabs li:nth-child(4) label::before,
+.act-slider > input:nth-of-type(5):checked ~ .act-tabs li:nth-child(5) label::before,
+.act-slider > input:nth-of-type(6):checked ~ .act-tabs li:nth-child(6) label::before,
+.act-slider > input:nth-of-type(7):checked ~ .act-tabs li:nth-child(7) label::before { display: block; }
+.act-slider > input:nth-of-type(1):checked ~ .act-tabs li:nth-child(1) label,
+.act-slider > input:nth-of-type(2):checked ~ .act-tabs li:nth-child(2) label,
+.act-slider > input:nth-of-type(3):checked ~ .act-tabs li:nth-child(3) label,
+.act-slider > input:nth-of-type(4):checked ~ .act-tabs li:nth-child(4) label,
+.act-slider > input:nth-of-type(5):checked ~ .act-tabs li:nth-child(5) label,
+.act-slider > input:nth-of-type(6):checked ~ .act-tabs li:nth-child(6) label,
+.act-slider > input:nth-of-type(7):checked ~ .act-tabs li:nth-child(7) label { color: var(--oranje); }
+
+/* ==========================================================
+   WordPress-aanvullingen
+   ========================================================== */
+.intro-tekst .smal p + p,
+.project-intro p + p,
+.drie-kolom p + p,
+.idee p + p,
+.vacature-contact p + p { margin-top: 1em; }
+.intro-tekst .smal a, .vacature-contact a, .project-intro a { text-decoration: underline; }
+.hero-leeg { height: 300px; background: var(--blauw); }
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.melding { padding: 12px 16px; margin-bottom: 16px; font-weight: 500; }
+.melding-ok { background: #e3f4e1; color: #1d5b1a; }
+.melding-onvolledig, .melding-fout { background: #fbe7e7; color: #8a1f1f; }
+.vacature-lijst { padding-bottom: 32px; }
+.geen-vacatures { max-width: 800px; margin: 0 auto 32px; }
+.vacature-inhoud > * { grid-column: 1 / -1; }
+.vacature-inhoud .wp-block-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 48px; }
+.vacature-inhoud h3, .vacature-inhoud h4 { font-size: 18px; font-weight: 700; margin: 16px 0 4px; }
+.vacature-inhoud ul { list-style: disc; padding-left: 20px; }
+.bericht { text-align: left; margin-bottom: 32px; }
+.admin-bar .site-header { top: 32px; }
+@media (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
+@media (max-width: 1023px) { .vacature-inhoud .wp-block-columns { grid-template-columns: 1fr; } }
+
+/* Pagina zonder header-blok: ruimte onder de vaste menubalk */
+body.zonder-header main { padding-top: 143px; }
+body.zonder-header .intro-vak { margin-top: 0; }
+/* Losse standaardblokken (alinea, kop, lijst …) tussen de eigen blokken */
+main > p, main > h2, main > h3, main > ul, main > ol, main > figure, main > .wp-block-buttons, main > .wp-block-columns {
+	max-width: 800px; margin: 1em auto; padding: 0 24px; color: var(--blauw);
+}
+@media (max-width: 1023px) { body.zonder-header main { padding-top: 80px; } }
+
+/* ==========================================================
+   Blok-opties
+   ========================================================== */
+/* Tekstvak los (niet over de header) */
+.intro-vak.los { margin-top: 0; padding-top: 64px; }
+/* Header-hoogtes */
+.hero.hero-middel { height: 600px; }
+.hero.hero-klein { height: 400px; }
+.hero-klein .hero-tekst, .hero-middel .hero-tekst { top: auto; bottom: 48px; }
+/* Grote kop: blauw / minder witruimte */
+.idee.blauw h2 { color: var(--blauw); }
+.idee.compact { padding-top: 120px; padding-bottom: 120px; }
+/* Blauw blok met foto links */
+.cta.foto-links { flex-direction: row-reverse; }
+.cta .tekst p + p { padding-top: 0; }
+/* Tekstkolommen: 1 t/m 3 */
+.drie-kolom > div { flex: 1; width: auto; max-width: calc(100% / var(--kolommen, 3)); }
+.drie-kolom[style*="--kolommen:1"] { max-width: 800px; }
+/* Rij zonder icoon */
+.over-rij.zonder-icoon .rechts { padding-left: 0; }
+/* Contactformulier zonder gegevens */
+.contact-vak.zonder-gegevens .contact-form { max-width: 776px; margin: 0 auto; }
+.project-intro h2 { color: var(--oranje); font-size: 30px; text-transform: uppercase; margin-bottom: 24px; }
+.bdj-leeg { padding: 24px; text-align: center; color: var(--blauw); }
+@media (max-width: 1023px) {
+  .hero.hero-middel { height: 440px; }
+  .hero.hero-klein { height: 320px; }
+  .cta.foto-links { flex-direction: column-reverse; }
+  .drie-kolom > div { max-width: none; }
+  .intro-vak.los { margin: 0 16px; padding-top: 40px; }
+}
+
+/* Vacature uit velden */
+.vacature-inhoud .breed { grid-column: 1 / -1; }
+.vacature-inhoud .vacature-deel { grid-column: auto; }
+.vacature-inhoud .breed p + p { margin-top: 1em; }
+@media (max-width: 1023px) { .vacature-inhoud .vacature-deel { grid-column: 1 / -1; } }
+
+/* ==========================================================
+   Gelijktrekken met de live site (desktop)
+   ========================================================== */
+/* 2. Header krimpt bij scrollen (class via assets/js/header.js) */
+.logo { transition: padding .25s ease; }
+.site-header.gescrold .logo { padding-top: 10px; padding-bottom: 10px; }
+/* 3. Pijltje naast "Activiteiten" */
+.menu .menu-activiteiten::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: -5px 0 0 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+/* 4. Oranje streepje onder het actieve slider-icoon */
+.act-tabs label::after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 2px;
+  background: var(--oranje);
+}
+.act-slider > input:nth-of-type(1):checked ~ .act-tabs li:nth-child(1) label::after,
+.act-slider > input:nth-of-type(2):checked ~ .act-tabs li:nth-child(2) label::after,
+.act-slider > input:nth-of-type(3):checked ~ .act-tabs li:nth-child(3) label::after,
+.act-slider > input:nth-of-type(4):checked ~ .act-tabs li:nth-child(4) label::after,
+.act-slider > input:nth-of-type(5):checked ~ .act-tabs li:nth-child(5) label::after,
+.act-slider > input:nth-of-type(6):checked ~ .act-tabs li:nth-child(6) label::after,
+.act-slider > input:nth-of-type(7):checked ~ .act-tabs li:nth-child(7) label::after { display: block; }
+/* 5. Grijs vlak dat doorloopt achter het witte vak (band "grijs") */
+.grijs-band { background: var(--lichtgrijs); margin-top: -206px; height: 206px; }
+.grijs-band + .keurmerken { padding-top: 48px; }
+/* 6. SBB in de footer links uitgelijnd */
+.sbb { text-align: left; }
+.sbb .rij { justify-content: flex-start; }
+/* 7. Vacaturetitels in hoofdletters */
+.vacature .titel { text-transform: uppercase; }
+
+/* ==========================================================
+   Mobiel zoals de live site (gemeten op 390px)
+   ========================================================== */
+@media (max-width: 1023px) {
+  /* Header 60px hoog; inhoud begint eronder */
+  .logo, .compact .logo, .site-header.gescrold .logo { padding: 7px 0; }
+  .logo-beeld { width: 140px; height: 46px; }
+  main { padding-top: 60px; display: flex; flex-direction: column; }
+  body.zonder-header main { padding-top: 60px; }
+
+  /* Volgorde: header bovenaan, daarna blokken met "op mobiel direct onder de header" */
+  main > .hero:first-child { order: -2; }
+  main > .mobiel-boven { order: -1; }
+
+  /* Header: foto 16:9, titel in een vak onder de foto */
+  .hero, .hero.hero-middel, .hero.hero-klein { height: auto; }
+  .hero > img { aspect-ratio: 16 / 9; height: auto; }
+  .hero-tekst, .hero-klein .hero-tekst, .hero-middel .hero-tekst { position: static; padding: 0; }
+  .hero-vak { width: 100%; max-width: none; padding: 32px; }
+  .hero-vak h1, .hero-vak .titel { font-size: 40px; line-height: 1; }
+
+  /* Tekstvak: geen overlap, kop groot en links */
+  .intro-vak, .intro-vak.los { margin: 0; padding: 32px; text-align: left; }
+  .intro-vak h1, .intro-vak .h1, .intro-vak .vak-kop { font-size: 40px; line-height: 1; padding-bottom: 0; }
+  .intro-tekst { padding: 24px 0 0; }
+  .intro-tekst > p, .intro-tekst > .smal { padding-bottom: 0; }
+  .intro-tekst.niet-mobiel { display: none; }
+  .vacature-lijst, .contact-vak { text-align: left; }
+
+  /* Blauwe band sluit direct aan (geen overlap op mobiel) */
+  .blauw-band { margin-top: 0; padding-top: 0; }
+  .blauw-band .inner { padding: 48px 0; }
+  .grijs-band { display: none; }
+
+  /* Tijdlijn kort: alleen de stappen 1-4 onder elkaar met stippellijntjes */
+  .tijdlijn-kort .inner { padding: 80px 32px; }
+  .tijdlijn-kort .tijdlijn { display: flex; flex-direction: column; padding: 0; }
+  .tijdlijn-kort .tijdlijn::before { display: none; }
+  .tijdlijn-kort .kolom { display: contents; }
+  .tijdlijn-kort .tijdlijn p { display: none; }
+  .tijdlijn-kort .tijdlijn h3 {
+    position: relative;
+    margin: 0;
+    padding: 0 0 56px 20vw;
+    font-size: 20px;
+    justify-content: flex-start;
+  }
+  .tijdlijn-kort .tijdlijn .links h3 { flex-direction: row-reverse; justify-content: flex-end; }
+  .tijdlijn-kort .tijdlijn h3::after {
+    content: "";
+    position: absolute;
+    left: calc(20vw + 12px);
+    top: 39px;
+    height: 40px;
+    border-left: 2px dashed rgba(255, 255, 255, .75);
+  }
+  .tijdlijn-kort .tijdlijn h3.stap-1 { order: 1; }
+  .tijdlijn-kort .tijdlijn h3.stap-2 { order: 2; }
+  .tijdlijn-kort .tijdlijn h3.stap-3 { order: 3; }
+  .tijdlijn-kort .tijdlijn h3.stap-4 { order: 4; padding-bottom: 0; }
+  .tijdlijn-kort .tijdlijn h3.stap-4::after { display: none; }
+  .tijdlijn-kort .meer { text-align: left; padding: 64px 0 0 20vw; }
+
+  /* Activiteitenslider: iconen boven de foto, kaart onder de foto */
+  .act-slider { display: flex; flex-direction: column; }
+  .act-tabs { order: -1; }
+  .act-tabs ul { padding: 0 32px; }
+  .act-tabs label { width: auto; }
+  .act-tabs svg { width: 40px; height: 42px; }
+  .act-tabs label::before { top: auto; bottom: -17px; left: 50%; width: 34px; height: 34px; margin-left: -17px; transform: rotate(45deg); }
+  .act-tabs label::after { bottom: 4px; }
+  .act-slide { padding: 195px 32px 32px; }
+  .act-kaart { padding: 16px 24px 24px; background: rgba(239, 244, 248, .9); }
+  .act-kaart h2 { font-size: 32px; line-height: 1.6; }
+  .act-kaart p { min-height: 7em; }
+  .act-kaart .btn { display: block; width: 100%; text-align: center; }
+
+  /* Grote kop en blauw blok */
+  .idee, .idee.compact { padding: 64px 32px; }
+  .idee h2 { font-size: 40px; line-height: 1.25; }
+  .cta .tekst { padding: 48px 48px 96px; }
+  .cta h2 { font-size: 30px; line-height: 1.5; }
+  .cta .beeld { aspect-ratio: 16 / 10; }
+
+  /* Footer gecentreerd */
+  .site-footer { text-align: center; }
+  .footer-logo { display: inline-block; }
+  .sbb { text-align: center; }
+  .sbb .rij { justify-content: center; }
+  .footer-onder { align-items: center; }
+}
+
+/* Lange woorden in koppen (bv. BEDRIJFSPAND/INDUSTRIE) mogen afbreken op smalle schermen */
+@media (max-width: 1023px) {
+  main > * { min-width: 0; }
+  h1, h2, h3, .vak-kop, .hero-vak .titel { overflow-wrap: anywhere; hyphens: auto; }
+}

@@ -1,0 +1,16 @@
+<svg stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40.086" height="41.729" viewBox="0 0 40.086 41.729">
+    <g transform="translate(0 0)">
+        <g>
+            <path d="M21.646,2,41.185,12.49V42.828H35.713V22.98H7.472V42.828H2V12.49L21.539,2Z" transform="translate(-1.55 -1.549)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <rect width="13.242" height="13.662" transform="translate(20.918 27.616)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line x1="13.242" y2="13.662" transform="translate(20.918 27.616)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <line x2="13.242" y2="13.662" transform="translate(20.918 27.616)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <rect width="13.242" height="6.257" transform="translate(20.918 21.431)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="6.065" y2="6.257" transform="translate(20.918 21.431)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="6.621" y2="6.257" transform="translate(27.539 21.431)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="29.972" transform="translate(4.98 15.237)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="29.972" transform="translate(4.98 18.259)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x2="29.972" transform="translate(4.98 12.373)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+</svg>

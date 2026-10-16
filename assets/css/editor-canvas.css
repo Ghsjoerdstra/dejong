@@ -1,0 +1,48 @@
+/* Aanpassingen in het editor-canvas, zodat het voorbeeld goed te bewerken is. */
+
+/* Blokken op volle breedte, zonder de standaard inhoudsbreedte van de editor */
+.editor-styles-wrapper .wp-block.bdj-blok-editor { max-width: none; margin-top: 0; margin-bottom: 0; position: relative; }
+.editor-styles-wrapper { padding: 0 !important; }
+
+/* Klikken in het voorbeeld selecteert het blok (links/sliders reageren alleen op de website) */
+.bdj-blok-editor .components-server-side-render,
+.bdj-blok-editor > div:not(.bdj-blok-label) { pointer-events: none; }
+
+/* Labeltje met de bloknaam */
+.bdj-blok-label {
+	position: absolute; top: 8px; right: 8px; z-index: 20;
+	background: rgba(0, 0, 0, .65); color: #fff; font: 600 11px/1 system-ui, sans-serif;
+	padding: 5px 8px; border-radius: 3px; opacity: 0; transition: opacity .15s; pointer-events: none;
+}
+.bdj-blok-editor:hover .bdj-blok-label,
+.bdj-blok-editor.is-selected .bdj-blok-label { opacity: 1; }
+
+/* Overlap tussen blokken uitzetten in de editor (op de website valt het witte vak wel over de header) */
+.editor-styles-wrapper .intro-vak { margin-top: 0; }
+.editor-styles-wrapper .hero { height: 520px; }
+.editor-styles-wrapper .idee { padding-top: 120px; padding-bottom: 120px; }
+.editor-styles-wrapper .site-header { position: static; }
+
+/* Paginatitel bovenaan het canvas in de huisstijl */
+.editor-styles-wrapper .editor-post-title,
+.editor-styles-wrapper .editor-post-title__input {
+	font-family: var(--font); font-weight: 700; text-transform: uppercase; color: var(--blauw);
+	font-size: 28px; line-height: 1.2; max-width: none; margin: 0; padding: 24px 32px 16px;
+	border-bottom: 1px dashed #c3cdd5;
+}
+
+/* Voorbeeld van de paginaheader bovenaan het canvas (geen blok; velden staan in het tabblad Pagina) */
+.bdj-header-voorbeeld { position: relative; }
+.bdj-header-klik { position: relative; cursor: pointer; display: block; outline-offset: -3px; }
+.bdj-header-klik:hover, .bdj-header-klik:focus { outline: 3px solid var(--wp-admin-theme-color, #3858e9); }
+.bdj-header-klik .link-lijn { pointer-events: none; }
+.bdj-header-label { opacity: 1 !important; top: 12px; right: 12px; }
+.bdj-header-geen-foto { height: 100%; display: flex; align-items: center; justify-content: center; background: #dfe5ea; color: #50575e; font: 600 15px/1.4 system-ui, sans-serif; }
+.bdj-header-uit {
+	display: block; width: 100%; padding: 14px 16px; border: 1px dashed #a7aaad; background: #f6f7f7;
+	color: #50575e; font: 500 13px/1.4 system-ui, sans-serif; cursor: pointer; text-align: center;
+}
+.bdj-header-uit:hover { background: #f0f6fc; border-color: #3858e9; color: #1d2327; }
+/* Titel in het editorvoorbeeld onderaan de (lagere) foto, zodat hij niet wordt afgesneden */
+.editor-styles-wrapper .hero-tekst { top: auto; bottom: 32px; }
+.editor-styles-wrapper .hero-vak { padding-bottom: 8px; }

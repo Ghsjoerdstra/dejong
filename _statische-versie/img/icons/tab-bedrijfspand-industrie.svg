@@ -1,0 +1,14 @@
+<svg stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.406" height="42.257" viewBox="0 0 38.406 42.257">
+    <line x2="23.999" transform="translate(3.106 27.541)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <g>
+        <g>
+            <path d="M11.932,60.477,2,52.2v30.93H31.941V61.258L21.9,52.2v8.277L11.824,52.2Z" transform="translate(-1.582 -41.29)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+            <path d="M129.692,18.557,130.236,2h8.532l1.789,41.421h-7.611" transform="translate(-102.587 -1.582)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+        </g>
+    </g>
+    <line x1="6.626" transform="translate(29.713 3.779)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <line x1="6.626" transform="translate(29.713 7.344)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <rect width="7.431" height="5.023" transform="translate(4.119 30.406)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <rect width="7.537" height="5.023" transform="translate(11.55 30.406)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+    <rect width="7.118" height="5.023" transform="translate(19.087 30.406)" fill="none" stroke-miterlimit="10" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="267.029" height="121.191" viewBox="0 0 267.029 121.191">
+                    <defs>
+                        <clipPath>
+                            <path d="M83.516-138.794H350.544V-259.985H83.516Z" transform="translate(-83.516 259.985)" fill="none"/>
+                        </clipPath>
+                        <clipPath>
+                            <rect width="27.058" height="56.682" fill="none"/>
+                        </clipPath>
+                        <clipPath>
+                            <path d="M413.377-218.913l-17.859,5.161,17.963,51.519,9.091-25.153-9.194-31.528Z" transform="translate(-395.518 218.913)" fill="none"/>
+                        </clipPath>
+                        <clipPath>
+                            <rect width="42175.25" height="42175.246" fill="none"/>
+                        </clipPath>
+                        <clipPath>
+                            <path d="M422.572-162.233H395.518v-56.681h27.054Z" transform="translate(-395.518 218.914)" fill="none"/>
+                        </clipPath>
+                        <linearGradient x1="0.34" y1="0.284" x2="0.606" y2="0.284" gradientUnits="objectBoundingBox">
+                            <stop offset="0"/>
+                            <stop offset="0.1"/>
+                            <stop offset="0.2"/>
+                            <stop offset="0.3"/>
+                            <stop offset="0.4"/>
+                            <stop offset="0.5"/>
+                            <stop offset="0.6" stop-color="#333"/>
+                            <stop offset="0.7" stop-color="#656565"/>
+                            <stop offset="0.8" stop-color="#999"/>
+                            <stop offset="0.9" stop-color="#cbcbcb"/>
+                            <stop offset="1" stop-color="#fff"/>
+                        </linearGradient>
+                        <linearGradient x1="0.34" y1="0.284" x2="0.606" y2="0.284" gradientUnits="objectBoundingBox">
+                            <stop offset="0" stop-color="#044f59"/>
+                            <stop offset="0.1" stop-color="#044f59"/>
+                            <stop offset="0.2" stop-color="#044f59"/>
+                            <stop offset="0.3" stop-color="#044f59"/>
+                            <stop offset="0.4" stop-color="#044f59"/>
+                            <stop offset="0.5" stop-color="#044f59"/>
+                            <stop offset="0.6" stop-color="#044f59"/>
+                            <stop offset="0.7" stop-color="#044f59"/>
+                            <stop offset="0.8" stop-color="#044f59"/>
+                            <stop offset="0.9" stop-color="#044f59"/>
+                            <stop offset="1" stop-color="#044f59"/>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(0 40.677)">
+                        <g transform="translate(0 0)">
+                            <path d="M-14.163-43.42l-25.57-73.1,18.351-5.3L-4.99-66.423h.3l19.7-55.391,17.447,5.3L3.284-43.42Z" transform="translate(39.733 121.814)" fill="#044f59"/>
+                        </g>
+                    </g>
+                    <g transform="translate(0.001 0)">
+                        <g transform="translate(73.713 40.679)">
+                            <g transform="translate(0 0)">
+                                <path d="M-33.906-36.546c-7.37,9.082-16.244,14.53-28.278,14.53-21.658,0-32.938-20.582-32.938-39.047,0-21.036,13.085-41.466,35.646-41.466,11.132,0,19.7,5.295,26.473,12.864l-10.38,10.14c-4.662-3.783-8.872-7.264-15.341-7.264-11.431,0-17.146,12.41-17.146,24.062,0,16.043,7.069,24.97,16.244,24.97,6.768,0,11.282-4.086,15.493-8.475Z" transform="translate(95.122 102.528)" fill="#044f59"/>
+                            </g>
+                        </g>
+                        <g transform="translate(140.338 40.677)">
+                            <g transform="translate(0 0)">
+                                <path d="M-22.41-23.136C-39.857-19.2-45.422-14.963-45.422-7.245c0,5.6,3.91,8.929,9.626,8.929,3.76,0,8.723-2.421,13.085-7.113Zm-37-26.332C-42.865-63.09-34.442-64.906-26.32-64.906c11.28,0,21.658,7.115,21.658,21.946,0,2.722,0,4.389-.15,6.356l-.6,21.944c-.15,3.481-.3,6.356-.3,9.536,0,4.236,2.106,7.262,4.063,7.262C-.752,2.137.6,1.683,3.76.17L8.122,9.4c-7.971,5.3-12.333,6.2-15.792,6.2-6.467,0-11.731-3.783-13.085-10.14-5.415,6.356-12.183,10.14-19.4,10.14C-53.694,15.606-62.87,6.98-62.87-6.64c0-12.258,7.823-22.852,40.611-28.3v-4.994c0-8.475-3.61-10.139-8.723-10.139-3.76,0-8.272,1.513-19.7,10.442Z" transform="translate(62.87 64.906)" fill="#044f59"/>
+                            </g>
+                        </g>
+                        <g transform="translate(200.788 26.431)">
+                            <g transform="translate(0)">
+                                <path d="M-9.913,0l-17.9,5.162L-9.846,56.681-.765,31.546Z" transform="translate(27.811)" fill="#38c7d4"/>
+                            </g>
+                        </g>
+                        <g transform="translate(218.754 0.001)">
+                            <g transform="translate(0)">
+                                <path d="M-16.63,0-46.654,83.112h17.159L1.62,5.543Z" transform="translate(46.654)" fill="#044f59"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>

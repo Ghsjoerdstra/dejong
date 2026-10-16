@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="443.632" height="175.557" viewBox="0 0 443.632 175.557">
+                    <defs>
+                        <clipPath>
+                            <path d="M42.91-150.005H247.247V-314.829H42.91Z" transform="translate(-42.91 314.829)" fill="none"/>
+                        </clipPath>
+                    </defs>
+                    <g transform="translate(0 2)">
+                        <g transform="translate(0 0)">
+                            <g transform="translate(0 8.733)">
+                                <g transform="translate(175.5 122.369)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-14.259-7.173A8.231,8.231,0,0,1-22.451,1.07a8.23,8.23,0,0,1-8.193-8.243,8.231,8.231,0,0,1,8.193-8.243A8.27,8.27,0,0,1-14.259-7.173Z" transform="translate(30.644 15.417)" fill="none" stroke="#211e1f" stroke-width="1.702"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(180.762 125.739)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-1.093-3.508H1.06C2.5-3.569,2.854-4.23,2.854-4.953c0-.782-.3-1.384-1.794-1.444H-1.093Zm.06,1.143V1.907H-2.349V-7.54H1c1.614,0,3.229.482,3.229,2.406A2.213,2.213,0,0,1,2.435-2.846c1.136.3,1.316.9,1.435,1.926a10.8,10.8,0,0,0,.6,2.828H3.093c-.119-.541-.3-1.2-.358-1.745A4.186,4.186,0,0,0,2.2-1.944,1.724,1.724,0,0,0,.761-2.365Z" transform="translate(2.349 7.54)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(0 142.56)">
+                                    <g>
+                                        <path d="M0,0H17.522V3.611h-6.4V21.783H6.458V3.611H0Z" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(21.05 135.942)">
+                                    <path d="M-553.031,6196.132h3.05v3.611h-3.05Zm-5.143,0h3.05v3.611h-3.05Zm13.455,6.618v13.6c0,5.777-4.126,8.6-9.389,8.6s-9.389-2.827-9.389-8.6v-13.6h4.665v11.794c0,3.671.179,7.041,4.724,7.041s4.724-3.37,4.724-7.041V6202.75Z" transform="translate(563.496 -6196.132)" fill="#211e1f"/>
+                                </g>
+                                <g transform="translate(43.356 142.56)">
+                                    <g>
+                                        <path d="M0,0H5.083L10.7,17.149h.06L16.385,0h4.6L13.037,21.783H7.954Z" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(68.113 142.56)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-2.55-8.116H2.414C5.762-8.236,6.48-9.8,6.48-11.486c0-1.745-.777-3.249-4.066-3.369H-2.55Zm.06,2.648V4.34H-5.48V-17.443H2.235c3.647,0,7.355,1.143,7.355,5.475A5.131,5.131,0,0,1,5.524-6.732v.06c2.631.6,2.99,2.046,3.289,4.453A27.266,27.266,0,0,0,10.188,4.34H6.959C6.719,3.015,6.3,1.632,6.181.308c-.239-1.985-.239-3.73-1.256-4.813-.9-1.023-2.093-.9-3.289-1.023H-2.49Z" transform="translate(5.48 17.443)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(88.206 142.56)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M0-18.955V-40.737H2.87v8.665h.06a5.356,5.356,0,0,1,4.9-2.467c3.947,0,5.143,2.647,5.143,5.355v10.229h-2.87V-27.92c0-2.648-.718-4.393-3.349-4.453a4.109,4.109,0,0,0-3.409,2.106,7.363,7.363,0,0,0-.478,3.49v7.822Z" transform="translate(0 40.737)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(105.308 148.819)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-9.263-5.655c.06-2.527-1.076-4.513-3.827-4.513-2.392,0-3.767,2.046-3.767,4.513Zm-7.594,1.986c-.18,2.648.9,5.415,3.767,5.415,2.213,0,3.349-.9,3.648-3.068h2.99c-.478,3.43-3.109,5.174-6.7,5.174-4.844,0-6.758-3.43-6.758-7.883s2.213-8.123,7-8.123c4.485.12,6.638,2.948,6.638,7.16v1.384H-16.857Z" transform="translate(19.908 12.153)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(122.95 142.56)">
+                                    <path d="M-372.622,6215.128h2.87v15.164h-2.87Zm-.3-6.619h3.409v3.129h-3.409Z" transform="translate(372.921 -6208.509)" fill="#211e1f"/>
+                                </g>
+                                <g transform="translate(130.963 148.698)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-2.5-2.356h0a5.33,5.33,0,0,1,4.6-2.708c1.017,0,5.681.241,5.681,5.114V10.581H4.917V1.074c0-2.527-1.017-3.851-3.468-3.851A3.692,3.692,0,0,0-1.3-1.634C-1.72-1.213-2.5-.551-2.5,2.4v8.184H-5.368v-15.1h2.811v2.166Z" transform="translate(5.368 5.064)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(149.022 142.56)">
+                                    <path d="M-324.16,6208.509h2.87v21.783h-2.87Z" transform="translate(324.16 -6208.509)" fill="#211e1f"/>
+                                </g>
+                                <g transform="translate(155.72 148.758)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-6.141-7.173c-1.734.06-4.067.722-4.067,2.948A2.694,2.694,0,0,0-7.217-1.4c3.348,0,4.006-2.948,3.947-5.716h-2.87Zm2.87-1.986c0-2.648-.12-4.152-3.169-4.152A2.549,2.549,0,0,0-9.251-10.9h-2.99c.12-3.309,2.751-4.513,5.681-4.513,3.11,0,6.159.963,6.159,5.175v7.22c0,.662.06,1.925.12,3.189H-2.194c-.3,0-.777.12-.837-.241-.06-.722-.12-1.384-.12-2.045H-3.27A4.757,4.757,0,0,1-7.935.589C-10.566.589-13.2-.8-13.2-3.744c0-4.272,3.768-5.475,7.3-5.475H-3.27Z" transform="translate(13.198 15.417)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(173.002 148.698)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-2.5-2.356h.06A5.173,5.173,0,0,1,2.107-5.064c1.076,0,5.681.241,5.681,5.114V10.581H4.917V1.074c0-2.527-1.017-3.851-3.468-3.851A3.692,3.692,0,0,0-1.3-1.634C-1.721-1.213-2.5-.551-2.5,2.4v8.184h-2.87v-15.1h2.811v2.166Z" transform="translate(5.368 5.064)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(189.866 142.56)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-6.349-17.594c3.468,0,4.246-3.249,4.246-6.078,0-2.768-1.017-6.017-4.246-6.017-3.409,0-4.246,3.189-4.246,6.017-.06,2.889,1.017,6.078,4.246,6.078m4.186-20.218H.648v19.074c0,.9.119,1.805.179,2.708H-2.1l-.06-2.286v-.12h-.06c-1.017,2.105-2.99,2.888-5.2,2.888-4.486,0-6.219-4.152-6.219-8,0-4.092,2.093-8,6.758-8a4.86,4.86,0,0,1,4.664,2.528h.06Z" transform="translate(13.644 37.811)" fill="#211e1f"/>
+                                    </g>
+                                </g>
+                                <g transform="translate(35.137 0)">
+                                    <g transform="translate(0 0)">
+                                        <path d="M-116.415-100.892l-8.28-14.425a142.944,142.944,0,0,0-24.532-2.16,134.177,134.177,0,0,0-33.655,4.243,133.707,133.707,0,0,1-33.655,4.32,104.455,104.455,0,0,1-12.113-.617l45.691-79.684,27.675,48.057a130.263,130.263,0,0,0-27.6,4.088,129.714,129.714,0,0,1-19.933,3.549l-8.356,14.5a136.036,136.036,0,0,0,28.289-4.166,134.61,134.61,0,0,1,33.655-4.242,131.378,131.378,0,0,1,18.322,1.234l-8.739-15.273-22.616-39.495-20.546-35.869L-250.193-99.426a127.461,127.461,0,0,0,33.655,4.4,124.769,124.769,0,0,0,33.655-4.4,138.251,138.251,0,0,1,33.655-4.243,138.727,138.727,0,0,1,33.655,4.243Z" transform="translate(250.193 216.831)" fill="#0078c1"/>
+                                    </g>
+                                </g>
+                            </g>
+                            <g transform="translate(260.632 0)">
+                                <text transform="translate(0 25)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">Management</tspan></text>
+                                <text transform="translate(140.485 24)" fill="#00335b" font-size="24" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0"> </tspan></text>
+                                <text transform="translate(0 56.545)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">Sy</tspan></text>
+                                <text transform="translate(26.619 56.545)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">st</tspan></text>
+                                <text transform="translate(48.575 56.545)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">em</tspan></text>
+                                <text transform="translate(0 88.09)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">ISO 9001:2015</tspan></text>
+                                <text transform="translate(0 119.635)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">V</tspan></text>
+                                <text transform="translate(14.017 119.635)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">C</tspan></text>
+                                <text transform="translate(28.322 119.635)" fill="#00335b" font-size="25" font-family="SegoeUI, Segoe UI" letter-spacing="0.08em"><tspan x="0" y="0">A**</tspan></text>
+                            </g>
+                            <g transform="translate(227.801 9.642)">
+                                <path d="M0,0V162.557" fill="none" stroke="#003f64" stroke-width="1.94"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
