@@ -157,6 +157,53 @@
 		);
 	}
 
+	/** Volgorde van de projecten bij een activiteit; slaat direct op in menu_order (zie inc/post-types.php). */
+	function ProjectVolgorde( props ) {
+		var state = wp.element.useState( null );
+		var lijst = state[ 0 ];
+		var zetLijst = state[ 1 ];
+		var bezig = wp.element.useState( false );
+		var pad = '/bdj/v1/projectvolgorde';
+		var activiteit = props.activiteit || props.postId;
+
+		wp.element.useEffect( function () {
+			zetLijst( null );
+			if ( ! activiteit ) return;
+			wp.apiFetch( { path: pad + '?activiteit=' + encodeURIComponent( activiteit ) } ).then( zetLijst, function () { zetLijst( [] ); } );
+		}, [ activiteit ] );
+
+		function verplaats( i, richting ) {
+			var j = i + richting;
+			if ( j < 0 || j >= lijst.length ) return;
+			var nieuw = lijst.slice();
+			var tmp = nieuw[ i ]; nieuw[ i ] = nieuw[ j ]; nieuw[ j ] = tmp;
+			zetLijst( nieuw );
+			bezig[ 1 ]( true );
+			wp.apiFetch( { path: pad, method: 'POST', data: { ids: nieuw.map( function ( p ) { return p.id; } ) } } )
+				.then( props.onOpgeslagen )
+				.finally( function () { bezig[ 1 ]( false ); } );
+		}
+
+		var van = props.vanaf || 0;
+		var tot = props.aantal > 0 ? van + props.aantal : Infinity;
+
+		return el( 'div', { className: 'bdj-veld-volgorde' },
+			el( 'p', { className: 'bdj-veld-label' }, props.label, bezig[ 0 ] ? el( c.Spinner ) : null ),
+			lijst === null
+				? el( c.Spinner )
+				: lijst.length
+					? el( 'ol', null, lijst.map( function ( p, i ) {
+						return el( 'li', { key: p.id, className: i >= van && i < tot ? 'is-zichtbaar' : '' },
+							el( 'span', null, p.titel ),
+							el( c.Button, { icon: 'arrow-up-alt2', label: 'Omhoog', size: 'small', disabled: i === 0, onClick: function () { verplaats( i, -1 ); } } ),
+							el( c.Button, { icon: 'arrow-down-alt2', label: 'Omlaag', size: 'small', disabled: i === lijst.length - 1, onClick: function () { verplaats( i, 1 ); } } )
+						);
+					} ) )
+					: el( 'p', null, 'Geen projecten bij deze activiteit.' ),
+			props.hint ? el( 'p', { className: 'components-base-control__help' }, props.hint ) : null
+		);
+	}
+
 	function veldControl( key, veld, waarde, onChange ) {
 		var basis = { key: key, label: veld.label, help: veld.hint || undefined, __nextHasNoMarginBottom: true };
 		switch ( veld.type ) {
@@ -190,6 +237,7 @@
 				var attrs = props.attributes;
 				var blockProps = be.useBlockProps( { className: 'bdj-blok-editor' } );
 				var isOpen = wp.element.useState( false );
+				var versie = wp.element.useState( 0 ); // na het opslaan van de projectvolgorde het voorbeeld verversen
 				var postId = useSelect( function ( select ) {
 					var editor = select( 'core/editor' );
 					return editor ? editor.getCurrentPostId() : 0;
@@ -201,6 +249,13 @@
 					var veld = blok.velden[ key ];
 					if ( ! zichtbaar( veld, attrs ) ) return;
 					var paneel = veld.paneel || 'Inhoud';
+					if ( veld.type === 'projectvolgorde' ) {
+						( panelen[ paneel ] = panelen[ paneel ] || [] ).push( el( ProjectVolgorde, {
+							key: key, label: veld.label, hint: veld.hint, activiteit: attrs.activiteit, postId: postId, vanaf: attrs.vanaf, aantal: attrs.aantal,
+							onOpgeslagen: function () { versie[ 1 ]( versie[ 0 ] + 1 ); }
+						} ) );
+						return;
+					}
 					( panelen[ paneel ] = panelen[ paneel ] || [] ).push(
 						veldControl( key, veld, attrs[ key ], function ( waarde ) {
 							var nieuw = {};
@@ -244,7 +299,7 @@
 							block: blokNaam,
 							attributes: attrs,
 							httpMethod: 'POST',
-							urlQueryArgs: { post_id: postId },
+							urlQueryArgs: versie[ 0 ] ? { post_id: postId, v: versie[ 0 ] } : { post_id: postId },
 							EmptyResponsePlaceholder: function () {
 								return el( c.Placeholder, { icon: blok.icoon, label: blok.titel, instructions: 'Dubbelklik op het blok of klik op "Bewerken" om de inhoud in te vullen.' } );
 							}

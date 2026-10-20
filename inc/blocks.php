@@ -218,6 +218,7 @@ function bdj_blok_schema() {
 				'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => 'activiteit_paginas', 'hint' => 'Automatisch = de projecten van de activiteit waar dit blok op staat.' ),
 				'vanaf'      => array( 'label' => 'Eerste … projecten overslaan', 'type' => 'number', 'default' => 0, 'hint' => 'Tekst tussen de projecten? Zet twee Projecten-blokken met een Tekstkolom ertussen: 1e blok 4 tonen, 2e blok 4 overslaan.' ),
 				'aantal'     => array( 'label' => 'Aantal tonen (0 = alle)', 'type' => 'number', 'default' => 0 ),
+				'volgorde'   => array( 'label' => 'Volgorde', 'type' => 'projectvolgorde', 'hint' => 'Wordt direct opgeslagen en geldt voor alle Projecten-blokken van deze activiteit. Vetgedrukt = zichtbaar in dit blok.' ),
 			),
 		),
 		'tekstkolom'          => array(
@@ -289,7 +290,7 @@ add_action( 'init', function () {
 	wp_register_script(
 		'bdj-blokken',
 		BDJ_URI . '/assets/js/blokken.js',
-		array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-data', 'wp-core-data' ),
+		array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-data', 'wp-core-data', 'wp-api-fetch' ),
 		BDJ_VERSION,
 		true
 	);
@@ -297,6 +298,9 @@ add_action( 'init', function () {
 	foreach ( bdj_blok_schema() as $naam => $blok ) {
 		$attributen = array();
 		foreach ( $blok['velden'] as $key => $veld ) {
+			if ( 'projectvolgorde' === $veld['type'] ) {
+				continue; // geen attribuut: staat in menu_order van de projecten
+			}
 			$attributen[ $key ] = bdj_blok_attribuut( $veld );
 		}
 		register_block_type( 'bdj/' . $naam, array(

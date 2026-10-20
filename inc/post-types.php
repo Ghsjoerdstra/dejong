@@ -119,6 +119,41 @@ function bdj_projecten( $activiteit ) {
 	) );
 }
 
+/*
+ * Volgorde van de projecten bij een activiteit, vanuit het Projecten-blok in de editor.
+ * De volgorde staat in menu_order van de projecten, dus geldt voor alle Projecten-blokken van die activiteit.
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'bdj/v1', '/projectvolgorde', array(
+		array(
+			'methods'             => 'GET',
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+			'callback'            => function ( $request ) {
+				return array_map( function ( $project ) {
+					return array( 'id' => $project->ID, 'titel' => get_the_title( $project ) );
+				}, bdj_projecten( $request['activiteit'] ) );
+			},
+		),
+		array(
+			'methods'             => 'POST',
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+			'callback'            => function ( $request ) {
+				foreach ( array_values( (array) $request['ids'] ) as $volgorde => $id ) {
+					$id = absint( $id );
+					if ( 'project' === get_post_type( $id ) && current_user_can( 'edit_post', $id ) ) {
+						wp_update_post( array( 'ID' => $id, 'menu_order' => $volgorde ) );
+					}
+				}
+				return true;
+			},
+		),
+	) );
+} );
+
 /* -------------------------------------------------------------------------
  * URL's van activiteiten: direct onder de hoofdmap (/wonen/), net als voorheen als pagina.
  * ---------------------------------------------------------------------- */

@@ -10,6 +10,14 @@
 .bdj-veld-herhaler .components-panel__body { border: 1px solid #e0e0e0; margin-bottom: 8px; }
 .bdj-veld-herhaler .bdj-velden > * + *, .bdj-veld-herhaler .components-panel__body > * + * { margin-top: 12px; }
 .bdj-knoppen { display: flex; align-items: center; gap: 4px; margin-top: 8px; }
+.bdj-veld-volgorde .bdj-veld-label { display: flex; align-items: center; gap: 8px; }
+.bdj-veld-volgorde .bdj-veld-label .components-spinner { margin: 0; }
+.bdj-veld-volgorde ol { margin: 0 0 8px; padding: 0; list-style: none; counter-reset: volgorde; border: 1px solid #e0e0e0; }
+.bdj-veld-volgorde li { display: flex; align-items: center; gap: 4px; margin: 0; padding: 2px 4px 2px 12px; color: #757575; counter-increment: volgorde; }
+.bdj-veld-volgorde li + li { border-top: 1px solid #f0f0f0; }
+.bdj-veld-volgorde li::before { content: counter(volgorde) "."; min-width: 1.5em; }
+.bdj-veld-volgorde li span { flex: 1; }
+.bdj-veld-volgorde li.is-zichtbaar { color: #1e1e1e; font-weight: 600; }
 
 /* Popup om een blok te bewerken */
 .bdj-popup { width: min(640px, calc(100vw - 32px)); }
