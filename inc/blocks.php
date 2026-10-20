@@ -215,10 +215,12 @@ function bdj_blok_schema() {
 			'beschrijving' => 'Projectkaarten met fotoslider, twee naast elkaar. Projecten beheer je onder "Projecten".',
 			'icoon'        => 'building',
 			'velden'       => array(
-				'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => 'activiteit_paginas', 'hint' => 'Automatisch = de projecten van de activiteit waar dit blok op staat.' ),
-				'vanaf'      => array( 'label' => 'Eerste … projecten overslaan', 'type' => 'number', 'default' => 0, 'hint' => 'Tekst tussen de projecten? Zet twee Projecten-blokken met een Tekstkolom ertussen: 1e blok 4 tonen, 2e blok 4 overslaan.' ),
-				'aantal'     => array( 'label' => 'Aantal tonen (0 = alle)', 'type' => 'number', 'default' => 0 ),
-				'volgorde'   => array( 'label' => 'Volgorde', 'type' => 'projectvolgorde', 'hint' => 'Wordt direct opgeslagen en geldt voor alle Projecten-blokken van deze activiteit. Vetgedrukt = zichtbaar in dit blok.' ),
+				'modus'      => array( 'label' => 'Welke projecten', 'type' => 'select', 'opties' => array( 'activiteit' => 'Alle projecten van een activiteit', 'selectie' => 'Zelf projecten kiezen' ), 'default' => 'activiteit' ),
+				'activiteit' => array( 'label' => 'Activiteit', 'type' => 'select', 'opties' => 'activiteit_paginas', 'hint' => 'Automatisch = de projecten van de activiteit waar dit blok op staat.', 'toon' => array( 'modus' => 'activiteit' ) ),
+				'vanaf'      => array( 'label' => 'Eerste … projecten overslaan', 'type' => 'number', 'default' => 0, 'hint' => 'Tekst tussen de projecten? Zet twee Projecten-blokken met een Tekstkolom ertussen: 1e blok 4 tonen, 2e blok 4 overslaan.', 'toon' => array( 'modus' => 'activiteit' ) ),
+				'aantal'     => array( 'label' => 'Aantal tonen (0 = alle)', 'type' => 'number', 'default' => 0, 'toon' => array( 'modus' => 'activiteit' ) ),
+				'volgorde'   => array( 'label' => 'Volgorde', 'type' => 'projectvolgorde', 'hint' => 'Wordt direct opgeslagen en geldt voor alle Projecten-blokken van deze activiteit. Vetgedrukt = zichtbaar in dit blok.', 'toon' => array( 'modus' => 'activiteit' ) ),
+				'projecten'  => array( 'label' => 'Projecten in dit blok', 'type' => 'projectselectie', 'hint' => 'Alleen voor dit blok; de volgorde hier is de volgorde op de pagina.', 'toon' => array( 'modus' => 'selectie' ) ),
 			),
 		),
 		'tekstkolom'          => array(
@@ -268,6 +270,7 @@ function bdj_blok_attribuut( $veld ) {
 			$attr = array( 'type' => 'integer', 'default' => 0 );
 			break;
 		case 'gallery':
+		case 'projectselectie':
 			$attr = array( 'type' => 'array', 'default' => array(), 'items' => array( 'type' => 'integer' ) );
 			break;
 		case 'repeater':
@@ -695,13 +698,26 @@ function bdj_render_activiteiten_tegels( $a ) {
 }
 
 function bdj_render_projecten( $a ) {
-	$act   = $a['activiteit'] ? bdj_activiteit_id( $a['activiteit'] ) : bdj_blok_post_id();
-	$lijst = bdj_projecten( $act );
-	$lijst = array_slice( $lijst, max( 0, (int) $a['vanaf'] ), (int) $a['aantal'] > 0 ? (int) $a['aantal'] : null );
-	if ( ! $lijst ) {
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+	if ( 'selectie' === $a['modus'] ) {
+		$ids   = array_filter( array_map( 'absint', (array) $a['projecten'] ) );
+		$lijst = $ids ? get_posts( array(
+			'post_type'      => 'project',
+			'posts_per_page' => -1,
+			'post__in'       => $ids,
+			'orderby'        => 'post__in',
+		) ) : array();
+		if ( ! $lijst && defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+			echo '<p class="bdj-leeg">Nog geen projecten gekozen voor dit blok.</p>';
+		}
+	} else {
+		$act   = $a['activiteit'] ? bdj_activiteit_id( $a['activiteit'] ) : bdj_blok_post_id();
+		$lijst = bdj_projecten( $act );
+		$lijst = array_slice( $lijst, max( 0, (int) $a['vanaf'] ), (int) $a['aantal'] > 0 ? (int) $a['aantal'] : null );
+		if ( ! $lijst && defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 			echo '<p class="bdj-leeg">Geen projecten gevonden voor "' . esc_html( get_the_title( $act ) ) . '" (of alle projecten zijn overgeslagen). Koppel projecten via Projecten → Activiteit.</p>';
 		}
+	}
+	if ( ! $lijst ) {
 		return;
 	}
 	echo '<section class="projecten-blok">';

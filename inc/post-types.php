@@ -124,6 +124,30 @@ function bdj_projecten( $activiteit ) {
  * De volgorde staat in menu_order van de projecten, dus geldt voor alle Projecten-blokken van die activiteit.
  */
 add_action( 'rest_api_init', function () {
+	// Alle projecten, om in het Projecten-blok zelf een selectie te maken.
+	register_rest_route( 'bdj/v1', '/projecten', array(
+		'methods'             => 'GET',
+		'permission_callback' => function () {
+			return current_user_can( 'edit_posts' );
+		},
+		'callback'            => function () {
+			$projecten = get_posts( array(
+				'post_type'      => 'project',
+				'posts_per_page' => -1,
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+			) );
+			return array_map( function ( $project ) {
+				$act = (int) get_post_meta( $project->ID, '_bdj_activiteit', true );
+				return array(
+					'id'         => $project->ID,
+					'titel'      => get_the_title( $project ),
+					'activiteit' => $act ? get_the_title( $act ) : '',
+				);
+			}, $projecten );
+		},
+	) );
+
 	register_rest_route( 'bdj/v1', '/projectvolgorde', array(
 		array(
 			'methods'             => 'GET',

@@ -204,6 +204,67 @@
 		);
 	}
 
+	/** Zelf projecten kiezen voor één blok (attribuut met project-ID's, in volgorde). */
+	var alleProjecten = null; // één keer ophalen, gedeeld door alle blokken
+	function ProjectSelectie( props ) {
+		var ids = props.value || [];
+		var state = wp.element.useState( alleProjecten );
+		var projecten = state[ 0 ];
+		var zetProjecten = state[ 1 ];
+
+		wp.element.useEffect( function () {
+			if ( projecten ) return;
+			wp.apiFetch( { path: '/bdj/v1/projecten' } ).then( function ( lijst ) {
+				alleProjecten = lijst;
+				zetProjecten( lijst );
+			}, function () { zetProjecten( [] ); } );
+		}, [] );
+
+		if ( ! projecten ) {
+			return el( 'div', { className: 'bdj-veld-volgorde' }, el( 'p', { className: 'bdj-veld-label' }, props.label ), el( c.Spinner ) );
+		}
+
+		var perId = {};
+		projecten.forEach( function ( p ) { perId[ p.id ] = p; } );
+		function naam( p ) {
+			return p.titel + ( p.activiteit ? ' — ' + p.activiteit : '' );
+		}
+		function verplaats( i, richting ) {
+			var j = i + richting;
+			if ( j < 0 || j >= ids.length ) return;
+			var nieuw = ids.slice();
+			var tmp = nieuw[ i ]; nieuw[ i ] = nieuw[ j ]; nieuw[ j ] = tmp;
+			props.onChange( nieuw );
+		}
+
+		return el( 'div', { className: 'bdj-veld-volgorde' },
+			el( 'p', { className: 'bdj-veld-label' }, props.label ),
+			ids.length
+				? el( 'ol', null, ids.map( function ( id, i ) {
+					return el( 'li', { key: id, className: 'is-zichtbaar' },
+						el( 'span', null, perId[ id ] ? naam( perId[ id ] ) : '(verwijderd project)' ),
+						el( c.Button, { icon: 'arrow-up-alt2', label: 'Omhoog', size: 'small', disabled: i === 0, onClick: function () { verplaats( i, -1 ); } } ),
+						el( c.Button, { icon: 'arrow-down-alt2', label: 'Omlaag', size: 'small', disabled: i === ids.length - 1, onClick: function () { verplaats( i, 1 ); } } ),
+						el( c.Button, { icon: 'no-alt', label: 'Uit dit blok halen', size: 'small', isDestructive: true, onClick: function () { props.onChange( ids.filter( function ( x ) { return x !== id; } ) ); } } )
+					);
+				} ) )
+				: el( 'p', null, 'Nog geen projecten gekozen.' ),
+			el( c.ComboboxControl, {
+				label: 'Project toevoegen',
+				value: null,
+				__nextHasNoMarginBottom: true,
+				__next40pxDefaultSize: true,
+				options: projecten.filter( function ( p ) { return ids.indexOf( p.id ) === -1; } ).map( function ( p ) {
+					return { value: String( p.id ), label: naam( p ) };
+				} ),
+				onChange: function ( v ) {
+					if ( v ) props.onChange( ids.concat( [ parseInt( v, 10 ) ] ) );
+				}
+			} ),
+			props.hint ? el( 'p', { className: 'components-base-control__help' }, props.hint ) : null
+		);
+	}
+
 	function veldControl( key, veld, waarde, onChange ) {
 		var basis = { key: key, label: veld.label, help: veld.hint || undefined, __nextHasNoMarginBottom: true };
 		switch ( veld.type ) {
@@ -219,6 +280,8 @@
 				return el( Afbeelding, { key: key, label: veld.label, hint: veld.hint, value: waarde || 0, onChange: onChange } );
 			case 'gallery':
 				return el( Galerij, { key: key, label: veld.label, hint: veld.hint, value: waarde || [], onChange: onChange } );
+			case 'projectselectie':
+				return el( ProjectSelectie, { key: key, label: veld.label, hint: veld.hint, value: waarde || [], onChange: onChange } );
 			case 'repeater':
 				return el( Herhaler, { key: key, veld: veld, value: waarde || [], onChange: onChange } );
 			default:
